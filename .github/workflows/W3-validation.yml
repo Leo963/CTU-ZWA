@@ -4,5 +4,7 @@ jobs:
   Send-HTML:
     runs-on: ubuntu-latest
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
       - name: Validate Index
         run: "curl -H \"Content-Type: text/html; charset=utf-8\" --data-binary @./index.html https://validator.w3.org/nu/?out=json > index.json"
