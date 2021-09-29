@@ -1,1 +1,8 @@
-
+name: HTML Validation
+on: [push]
+jobs:
+  Send-HTML:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Index
+        run: curl -H "Content-Type: text/html; charset=utf-8" --data-binary @index.html https://validator.w3.org/nu/?out=json > index.json
