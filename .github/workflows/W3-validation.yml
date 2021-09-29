@@ -8,3 +8,5 @@ jobs:
         uses: actions/checkout@v2
       - name: Validate Index
         run: "curl -H \"Content-Type: text/html; charset=utf-8\" --data-binary @./index.html https://validator.w3.org/nu/?out=json > index.json"
+      - name: Return result
+        run: cat index.json
