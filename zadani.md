@@ -36,6 +36,20 @@ Každý student bude moct mít přiřazené předměty a vyučující budou scho
 Zadání bude realizováno za využití HTML5, CSS a JS pro front end.
 Serverová strana bude na platformě PHP.
 
+<div style="page-break-after: always;"></div>
+
 #### Návrh databáze
 
-![Návrh databáze](https://cdn.discordapp.com/attachments/513038521192153093/891655224685658142/unknown.png)
+![Návrh databáze](https://cdn.discordapp.com/attachments/513038521192153093/892856858279280720/unknown.png)
+
+#### Obsáhnuté stránky
+
+- Přihlašovací stránka - jednoduché přihlášení pomocí
+- Administrace studentů - vyučující a administrátoři vydí seznamy studentů
+- Zápis předmětu - studenti si budou moci zapsat předmět a vybrat si paralelku
+- Postup studenta - souhrnné zobrazení rozvrhu, posledních známek a průměrů
+- Rozvrh - zobrazení rozvrhu dle aktuálních paralelek
+- Vytváření/editace uživatele
+- Vytváření/editace předmětu a jeho paralelek
+- Registrace studentů
+- Nastavení účtu uživatele
