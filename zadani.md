@@ -6,6 +6,7 @@
     - [Požadavky](#požadavky-1)
     - [Technická anotace zadání](#technická-anotace-zadání)
       - [Návrh databáze](#návrh-databáze)
+      - [Obsáhnuté stránky](#obsáhnuté-stránky)
 
 ## Abstrakt
 
@@ -35,8 +36,6 @@ Každý student bude moct mít přiřazené předměty a vyučující budou scho
 
 Zadání bude realizováno za využití HTML5, CSS a JS pro front end.
 Serverová strana bude na platformě PHP.
-
-<div style="page-break-after: always;"></div>
 
 #### Návrh databáze
 
