@@ -8,6 +8,10 @@
       - [Návrh databáze](#návrh-databáze)
       - [Obsáhnuté stránky](#obsáhnuté-stránky)
 
+## Název
+
+Studentská Organizační Platforma
+
 ## Abstrakt
 
 Popis zadání jednoduché webu k evidenci studentů a jejich studijních výsledků
