@@ -47,12 +47,13 @@ Serverová strana bude na platformě PHP.
 
 #### Obsáhnuté stránky
 
-- Přihlašovací stránka - jednoduché přihlášení pomocí
-- Administrace studentů - vyučující a administrátoři vydí seznamy studentů
-- Zápis předmětu - studenti si budou moci zapsat předmět a vybrat si paralelku
-- Postup studenta - souhrnné zobrazení rozvrhu, posledních známek a průměrů
-- Rozvrh - zobrazení rozvrhu dle aktuálních paralelek
-- Vytváření/editace uživatele
-- Vytváření/editace předmětu a jeho paralelek
-- Registrace studentů
-- Nastavení účtu uživatele
+- [x] Přihlašovací stránka - jednoduché přihlášení pomocí
+- [] Administrace studentů - vyučující a administrátoři vydí seznamy studentů
+- [] Zápis předmětu - studenti si budou moci zapsat předmět a vybrat si paralelku
+- [] Postup studenta - souhrnné zobrazení rozvrhu, posledních známek a průměrů
+- [] Rozvrh - zobrazení rozvrhu dle aktuálních paralelek
+- [] Vytváření/editace uživatele
+- [] Vytváření/editace předmětu a jeho paralelek
+- [x] Registrace studentů
+- [] Nastavení účtu uživatele
+- [x] Úvodní stránka
