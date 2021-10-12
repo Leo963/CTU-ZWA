@@ -58,4 +58,4 @@ Serverová strana bude na platformě PHP.
 - [x] Nastavení účtu uživatele
 - [x] Úvodní stránka
 
-![Wirefame design](https://assets.adobe.com/link/86f37f29-7890-48ed-696e-0a9a9de0af70)
+[Wirefame design](https://assets.adobe.com/link/86f37f29-7890-48ed-696e-0a9a9de0af70)
