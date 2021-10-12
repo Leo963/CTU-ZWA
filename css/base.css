@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+* {
+    font-family: Roboto, sans-serif;
+}
+
+body > header, nav {
+    background-color: rgb(91,222,223);
+    margin: 0;
+}
+
+body > header {
+    display: grid;
+    height: 100px;
+    grid-template-columns: 1fr 1fr;
+}
+
+body {
+    margin: 0;
+}
+
+header > h1 {
+    justify-self: left;
+    align-self: center;
+    margin: 0;
+    padding: 20px 0 20px 20px;
+    font-size: 2.5em;
+}
+header > h2 {
+    justify-self: right;
+    align-self: center;
+    padding: 0 20px;
+}
+
+nav > ul {
+    margin: 0;
+    padding: 20px;
+}
+
+nav {
+    padding-left: 10px;
+    font-size: 1.5em;
+    height: calc(100vh - 100px);
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+}
+
+section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px 1fr;
+}
+
+section > article {
+    grid-row: 2;
+}
+
+section > header {
+    display: grid;
+    justify-items: right;
+    grid-column: 2;
+}
