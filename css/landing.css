@@ -113,3 +113,21 @@ section > h4 {
     margin: 0;
     font-size: 1.3em;
 }
+
+.lessons {
+    display: grid;
+    justify-items: center;
+    padding: 20px 0;
+}
+
+div.lesson {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    height: 100px;
+    width: 80%;
+    background-color: white;
+}
+
+div.lesson > header {
+    padding: 10px;
+}
