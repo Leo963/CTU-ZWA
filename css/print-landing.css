@@ -1,0 +1,15 @@
+body > header, .content > nav {
+    display: none;
+}
+
+section.main {
+    display: block;
+}
+
+article {
+    margin: 0;
+}
+
+.lesson {
+    padding: 10pt;
+}

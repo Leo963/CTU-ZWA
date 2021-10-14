@@ -8,6 +8,10 @@
       - [Návrh databáze](#návrh-databáze)
       - [Obsáhnuté stránky](#obsáhnuté-stránky)
 
+## Název
+
+Studentská Organizační Platforma
+
 ## Abstrakt
 
 Popis zadání jednoduché webu k evidenci studentů a jejich studijních výsledků
@@ -43,12 +47,15 @@ Serverová strana bude na platformě PHP.
 
 #### Obsáhnuté stránky
 
-- Přihlašovací stránka - jednoduché přihlášení pomocí
-- Administrace studentů - vyučující a administrátoři vydí seznamy studentů
-- Zápis předmětu - studenti si budou moci zapsat předmět a vybrat si paralelku
-- Postup studenta - souhrnné zobrazení rozvrhu, posledních známek a průměrů
-- Rozvrh - zobrazení rozvrhu dle aktuálních paralelek
-- Vytváření/editace uživatele
-- Vytváření/editace předmětu a jeho paralelek
-- Registrace studentů
-- Nastavení účtu uživatele
+- [x] Přihlašovací stránka - jednoduché přihlášení pomocí
+- [ ] Administrace studentů - vyučující a administrátoři vydí seznamy studentů
+- [ ] Zápis předmětu - studenti si budou moci zapsat předmět a vybrat si paralelku
+- [x] Postup studenta - souhrnné zobrazení rozvrhu, posledních známek a průměrů
+- [ ] Rozvrh - zobrazení rozvrhu dle aktuálních paralelek
+- [x] Vytváření/editace uživatele
+- [x] Vytváření/editace předmětu a jeho paralelek
+- [x] Registrace studentů
+- [x] Nastavení účtu uživatele
+- [x] Úvodní stránka
+
+[Wirefame design](https://assets.adobe.com/link/86f37f29-7890-48ed-696e-0a9a9de0af70)
