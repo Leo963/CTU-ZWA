@@ -58,12 +58,26 @@ footer > a {
     padding: 10px 25px;
 }
 
+fieldset {
+    border: 2px black solid;
+    border-radius: 5px;
+}
+
 @media screen and (max-height: 960px) {
-    form > main {
+    form.signup > main {
         grid-template-columns: 1fr 1fr;
     }
 
-    form {
+    form.signup {
         width: 700px;
+    }
+
+    footer {
+        padding: 0 25px 25px 25px;
+    }
+
+    input[type=submit] {
+        padding: 10px;
+        font-size: 1.25em;
     }
 }
