@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Přihlášení</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<form action="signup_process.php" method="post">
+    <header>
+        <h1>Registrace</h1>
+    </header>
+    <main>
+        <fieldset>
+            <legend>Osobní údaje</legend>
+            <label>
+                Jméno
+                <input type="text" name="fname" required>
+            </label>
+            <label>
+                Příjmení
+                <input type="text" name="lname" required>
+            </label>
+            <label>
+                Datum narození
+                <input type="date" name="DOB" required>
+            </label>
+        </fieldset>
+        <fieldset>
+            <legend>Přihlašovací údaje</legend>
+            <label>
+                Uživatelské jméno
+                <input type="text" name="username" required>
+            </label>
+            <label>
+                Heslo
+                <input type="password" name="pass" required>
+            </label>
+        </fieldset>
+        <input type="submit" value="Přihlásit">
+    </main>
+    <footer>
+        <a href="signup.html">Nemáte účet? Zaregistrujte se</a>
+    </footer>
+</form>
+</body>
+</html>

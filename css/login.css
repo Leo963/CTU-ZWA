@@ -12,15 +12,18 @@ body {
 form {
     justify-self: center;
     align-self: center;
-    height: 500px;
+    height: 50vh;
     width: 350px
+}
+
+form > header, form > footer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
 }
 
 form > header {
     background-color: rgb(91,222,223);
-    display: grid;
-    justify-items: center;
-    align-items: center;
 }
 
 h1 {
@@ -34,15 +37,33 @@ form > main {
     display: grid;
 }
 
-form > main > label {
+form > main > label, fieldset > label {
     display: grid;
     justify-items: center;
     padding: 0.5em 0;
 }
 
-form > main > label > input {
+form > main > label > input, fieldset > label > input {
     width: 95%;
     padding: 0.35em;
     margin: 0.25em 0;
     border-radius: 8px;
+}
+
+form > footer {
+    background-color: #EBEBEB;
+}
+
+footer > a {
+    padding: 10px 25px;
+}
+
+@media screen and (max-height: 960px) {
+    form > main {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    form {
+        width: 700px;
+    }
 }
