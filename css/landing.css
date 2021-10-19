@@ -131,3 +131,25 @@ div.lesson {
 div.lesson > header {
     padding: 10px;
 }
+
+@media (prefers-color-scheme: dark) {
+    body > header, nav, article > header {
+        background-color: #22aaaa;
+    }
+
+    section.main {
+        background-color: #555;
+    }
+    div.lesson {
+        background-color: #555;
+        color: #EBEBEB;
+    }
+
+    section.main > h4 {
+        color: #EBEBEB;
+    }
+
+    section > article {
+        background-color: #737373;
+    }
+}
