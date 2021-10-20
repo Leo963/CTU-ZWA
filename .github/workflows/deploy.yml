@@ -1,0 +1,34 @@
+name: Deploy to toad
+on:
+  release:
+    types: [released]
+jobs:
+  SCP to server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: scp-html
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: ./*.html
+          remote: /home/kaufmlu1/www/semestralka/wftest
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+      - name: scp-css
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: css
+          remote: /home/kaufmlu1/www/semestralka/wftest/css
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+      - name: scp-php
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: ./*.php
+          remote: /home/kaufmlu1/www/semestralka/wftest
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
