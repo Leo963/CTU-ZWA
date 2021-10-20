@@ -8,19 +8,9 @@
     <link rel="stylesheet" href="css/print-landing.css" media="print">
 </head>
 <body>
-<header>
-    <h1>SOP</h1>
-    <h2><a href="">Jméno studenta</a></h2>
-</header>
+<?php include 'header.html'?>
 <div class="content">
-    <nav>
-        <ul>
-            <li><a href="landing.html">Úvod</a></li>
-            <li><a href="schedule.html">Rozvrh</a></li>
-            <li><a href="subjects.php">Předměty</a></li>
-            <li><a href="grades.html">Známky</a></li>
-        </ul>
-    </nav>
+    <?php include 'nav.html'?>
     <section class="main">
         <h4>Dnes je datum</h4>
         <article>

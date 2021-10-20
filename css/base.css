@@ -86,7 +86,7 @@ a:hover:before {
 
 section > article {
     grid-row: 2;
-    margin: 50px 150px;
+    margin: 5vh 5vw;
     display: grid;
     grid-template-rows: 100px 1fr;
     background-color: #EBEBEB;
@@ -121,5 +121,46 @@ section > h4 {
 
     section.main {
         background-color: #555;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    ul > li {
+        display: inline;
+        margin: 0 0 0 10px;
+    }
+
+    .content {
+        grid-template-columns: 1fr;
+    }
+
+    a:hover:before {
+        display: none;
+    }
+
+    body > header > h2 > a:hover:before {
+        content: "";
+        display: block;
+        position: absolute;
+        transform: translateX(-150%) translateY(70%) rotate(45deg);
+        height: 8px;
+        width: 8px;
+        border: solid black;
+        border-width: 3px 3px 0 0;
+    }
+
+    .content > nav > ul {
+        display: grid;
+        grid-template-columns: 150px 150px 150px 150px 1fr;
+        place-items: center;
+    }
+
+    .content > nav {
+        height: auto;
+        border-top: 2px solid black;
+    }
+
+    nav {
+        padding: 0;
     }
 }
