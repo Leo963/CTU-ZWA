@@ -8,10 +8,10 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
-      - name: scp-html
+      - name: scp-root
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
-          local: ./*.html
+          local: ./
           remote: /home/kaufmlu1/www/semestralka/wftest
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
@@ -21,14 +21,6 @@ jobs:
         with:
           local: css
           remote: /home/kaufmlu1/www/semestralka/wftest/css
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.PASSWORD }}
-      - name: scp-php
-        uses: garygrossgarten/github-action-scp@v0.7.3
-        with:
-          local: ./*.php
-          remote: /home/kaufmlu1/www/semestralka/wftest
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
