@@ -8,16 +8,19 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+      - name: create deploy folder
+        run: |
+          mkdir deploy
+          cp *.html deploy
+          cp *.php deploy
       - name: scp-root
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
-          local: ./
+          local: deploy
           remote: /home/kaufmlu1/www/semestralka/wftest
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
-          dotfiles: false
-          recursive: false
       - name: scp-css
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
