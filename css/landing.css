@@ -134,7 +134,7 @@ div.lesson > header {
 
 @media (prefers-color-scheme: dark) {
     body > header, nav, article > header {
-        background-color: #22aaaa;
+        background-color: #2ad5d5;
     }
 
     section.main {

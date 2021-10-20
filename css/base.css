@@ -113,3 +113,13 @@ section > h4 {
     margin: 0;
     font-size: 1.3em;
 }
+
+@media (prefers-color-scheme: dark) {
+    body > header, nav, article > header {
+        background-color: #2ad5d5;
+    }
+
+    section.main {
+        background-color: #555;
+    }
+}

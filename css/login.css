@@ -63,6 +63,11 @@ fieldset {
     border-radius: 5px;
 }
 
+input[type=submit] {
+    padding: 10px;
+    font-size: 1.25em;
+}
+
 @media screen and (max-height: 960px) {
     form.signup > main {
         grid-template-columns: 1fr 1fr;
@@ -76,8 +81,4 @@ fieldset {
         padding: 0 25px 25px 25px;
     }
 
-    input[type=submit] {
-        padding: 10px;
-        font-size: 1.25em;
-    }
 }
