@@ -1,7 +1,7 @@
 name: Deploy to toad
 on:
   release:
-    types: [released]
+    types: [released, prereleased]
 jobs:
   SCP to server:
     runs-on: ubuntu-latest
