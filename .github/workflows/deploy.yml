@@ -3,7 +3,7 @@ on:
   release:
     types: [released, prereleased]
 jobs:
-  SCP to server:
+  SCP-to-server:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
