@@ -4,7 +4,7 @@ on:
     types: [released]
 jobs:
   SCP to server:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - name: checkout
         uses: actions/checkout@v2
