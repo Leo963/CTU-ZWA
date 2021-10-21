@@ -17,7 +17,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
           local: deploy
-          remote: /home/kaufmlu1/www/semestralka/wftest
+          remote: /home/kaufmlu1/www/semestralka
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
@@ -25,7 +25,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
           local: css
-          remote: /home/kaufmlu1/www/semestralka/wftest/css
+          remote: /home/kaufmlu1/www/semestralka/css
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
