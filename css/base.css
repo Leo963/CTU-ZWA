@@ -3,8 +3,12 @@
     font-family: Roboto, sans-serif;
 }
 
+body > header, nav, article > header, nav a, header a {
+    color: #FFFFFF;
+}
+
 body > header, nav {
-    background-color: rgb(91,222,223);
+    background-color: #2640A6;
     margin: 0;
 }
 
@@ -80,18 +84,19 @@ a:hover:before {
     transform: translateX(-150%) translateY(70%) rotate(45deg);
     height: 8px;
     width: 8px;
-    border: solid black;
+    border: solid white;
     border-width: 3px 3px 0 0;
 }
 
 
 @media (prefers-color-scheme: dark) {
-    body > header, nav, article > header {
-        background-color: #2ad5d5;
+    body > header, nav, article > header, nav a, header a {
+        color: white;
+        background-color: #938BA1;
     }
 
     section.main {
-        background-color: #555;
+        background-color: #0c1021;
     }
 }
 
@@ -105,21 +110,6 @@ a:hover:before {
         grid-template-columns: 1fr;
     }
 
-    a:hover:before {
-        display: none;
-    }
-
-    body > header > h2 > a:hover:before {
-        content: "";
-        display: block;
-        position: absolute;
-        transform: translateX(-150%) translateY(70%) rotate(45deg);
-        height: 8px;
-        width: 8px;
-        border: solid black;
-        border-width: 3px 3px 0 0;
-    }
-
     .content > nav > ul {
         display: grid;
         grid-template-columns: 150px 150px 150px 150px 1fr;
@@ -129,6 +119,7 @@ a:hover:before {
     .content > nav {
         height: auto;
         border-top: 2px solid black;
+        display: flex;
     }
 
     nav {
