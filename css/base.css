@@ -92,7 +92,6 @@ a:hover:before {
 @media (prefers-color-scheme: dark) {
     body > header, nav, article > header, nav a, header a {
         color: white;
-        background-color: #938BA1;
     }
 
     section.main {
