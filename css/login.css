@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('vars.css');
+
 * {
     font-family: Roboto, sans-serif;
 }
@@ -24,8 +26,8 @@ form > header, form > footer {
 }
 
 form > header {
-    background-color: #2640A6;
-    color: white;
+    background-color: var(--headers);
+    color: var(--foreground-headers);
 }
 
 h1 {

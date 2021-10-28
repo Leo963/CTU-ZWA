@@ -1,3 +1,5 @@
+@import url('vars.css');
+
 section.main {
     grid-template-columns: 1fr;
     justify-items: center;
@@ -5,7 +7,7 @@ section.main {
 
 article.subject {
     display: flex;
-    background-color: #EBEBEB;
+    background-color: var(--list-item-back-light);
     min-width: 300px;
     min-height: 30px;
     padding: 1em 25px;
@@ -45,7 +47,7 @@ div.sub-list > nav > a {
     padding: 0 0 0 10px;
 }
 
-a#left:hover:before, a#right:hover:before {
+a#left:hover:before, a#right:hover:before, div.sub-list > nav > a:hover:before {
     display: none;
 }
 
@@ -55,9 +57,20 @@ a#left, a#right {
 }
 
 a#left:hover, a#right:hover {
-    background-color: #1E9DEB;
+    background-color: var(--button-hover);
 }
 
 a > img {
     min-height: 1ex;
+}
+
+@media (prefers-color-scheme: dark) {
+    article.subject {
+        color: var(--foreground-dark);
+        background-color: var(--list-item-back-dark);
+    }
+
+    .main > h2 {
+        color: var(--foreground-dark);
+    }
 }

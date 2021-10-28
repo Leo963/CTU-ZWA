@@ -29,11 +29,19 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
-      - name: assets
+      - name: scp-assets
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:
           local: assets
           remote: /home/kaufmlu1/www/semestralka/assets
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+      - name: scp-js
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: js
+          remote: /home/kaufmlu1/www/semestralka/js
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}

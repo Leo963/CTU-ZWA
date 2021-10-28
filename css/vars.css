@@ -1,0 +1,17 @@
+:root {
+    --background-light: white;
+    --foreground-light: black;
+    --background-dark: #0c1021;
+    --foreground-dark: white;
+
+    --foreground-headers: white;
+    --headers: #2640A6;
+
+    --button-hover: #1E9DEB;
+
+    --list-background-light: #EBEBEB;
+    --list-item-back-light: lightgrey;
+
+    --list-background-dark: #737373;
+    --list-item-back-dark: #555;
+}
