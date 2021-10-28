@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url('vars.css');
+
 * {
     font-family: Roboto, sans-serif;
 }
 
 body > header, nav, article > header, nav a, header a {
-    color: #FFFFFF;
+    color: var(--foreground-headers);
 }
 
 body > header, nav {
-    background-color: #2640A6;
+    background-color: var(--headers);
     margin: 0;
 }
 
@@ -91,11 +93,11 @@ a:hover:before {
 
 @media (prefers-color-scheme: dark) {
     body > header, nav, article > header, nav a, header a {
-        color: white;
+        color: var(--foreground-dark);
     }
 
     section.main {
-        background-color: #0c1021;
+        background-color: var(--background-dark);
     }
 }
 
