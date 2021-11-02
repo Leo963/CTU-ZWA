@@ -18,32 +18,32 @@
                 <article class="subject">
                     <h3 class="code">Kód</h3>
                     <h3 class="name">Název</h3>
-                    <button class="detail" onclick="showDetail()">Detail</button>
+                    <button class="detail">Detail</button>
                 </article>
                 <article class="subject">
                     <h3 class="code">Kód</h3>
                     <h3 class="name">Název</h3>
-                    <button class="detail" onclick="showDetail()">Detail</button>
+                    <button class="detail">Detail</button>
                 </article>
                 <article class="subject">
                     <h3 class="code">Kód</h3>
                     <h3 class="name">Název</h3>
-                    <button class="detail" onclick="showDetail()">Detail</button>
+                    <button class="detail">Detail</button>
                 </article>
                 <article class="subject">
                     <h3 class="code">Kód</h3>
                     <h3 class="name">Název</h3>
-                    <button class="detail" onclick="showDetail()">Detail</button>
+                    <button class="detail">Detail</button>
                 </article>
                 <article class="subject">
                     <h3 class="code">Kód</h3>
                     <h3 class="name">Název</h3>
-                    <button class="detail" onclick="showDetail()">Detail</button>
+                    <button class="detail">Detail</button>
                 </article>
                 <article class="subject">
                     <h3 class="code">Kód</h3>
                     <h3 class="name">Název</h3>
-                    <button class="detail" onclick="showDetail()">Detail</button>
+                    <button class="detail">Detail</button>
                 </article>
             </section>
             <nav>
