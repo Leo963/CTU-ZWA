@@ -1,5 +1,5 @@
 CREATE TABLE `users` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `fname` varchar(255),
   `lname` varchar(255),
   `email` varchar(255),
@@ -10,12 +10,12 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `roles` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255)
 );
 
 CREATE TABLE `subjects` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `name` varchar(255),
   `code` varchar(255)
 );
@@ -31,7 +31,7 @@ CREATE TABLE `usersToClasses` (
 );
 
 CREATE TABLE `grades` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `student` int,
   `teacher` int,
   `subject` int,
@@ -40,7 +40,7 @@ CREATE TABLE `grades` (
 );
 
 CREATE TABLE `classes` (
-  `id` int PRIMARY KEY,
+  `id` int PRIMARY KEY AUTO_INCREMENT,
   `subjectId` int,
   `type` int,
   `timeOfDay` time,
@@ -48,7 +48,7 @@ CREATE TABLE `classes` (
 );
 
 CREATE TABLE `classTypes` (
-    `id` int PRIMARY KEY,
+    `id` int PRIMARY KEY AUTO_INCREMENT,
     `name` varchar(255)
 );
 
