@@ -1,0 +1,60 @@
+@import url('vars.css');
+
+section.main {
+    height: calc(100vh - 100px);
+    grid-template-columns: 1fr;
+    grid-template-rows: 80px 1fr;
+}
+
+section.main > h2 {
+    align-self: center;
+}
+
+.tabs {
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+
+.tabs button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+.tabs button:hover {
+    background-color: #555;
+}
+
+.tabs button.active {
+    background-color: #333;
+}
+
+@media (prefers-color-scheme: dark) {
+    section.main > h2 {
+        color: white;
+    }
+
+    .tab {
+        color: var(--foreground-dark);
+    }
+
+    .tabs button {
+        color: white;
+    }
+
+    .tabs {
+        border-color: var(--background-dark);
+    }
+}
