@@ -15,6 +15,14 @@ section.main > h2 {
     border: 1px solid #ccc;
 }
 
+.tab {
+    display: none;
+}
+
+.tab.active {
+    display: block;
+}
+
 .tabs button {
     background-color: inherit;
     float: left;
@@ -36,6 +44,10 @@ section.main > h2 {
 @media (prefers-color-scheme: dark) {
     section.main > h2 {
         color: white;
+    }
+
+    .tab {
+        color: var(--foreground-dark);
     }
 
     .tabs button {

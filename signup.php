@@ -8,7 +8,7 @@
     <script src="js/signup.js"></script>
 </head>
 <body>
-<form action="signup_process.php" method="post" class="signup" id="signup">
+<form action="" method="post" class="signup" id="signup">
     <header>
         <h1>Registrace</h1>
     </header>
@@ -42,7 +42,7 @@
     </main>
     <footer>
         <input type="submit" value="Registrovat">
-        <a href="login.html">Již máte účet? Přihlašte se</a>
+        <a href="login.php">Již máte účet? Přihlašte se</a>
     </footer>
 </form>
 </body>

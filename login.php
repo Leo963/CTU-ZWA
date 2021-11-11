@@ -7,7 +7,7 @@
     <script src="js/login.js"></script>
 </head>
 <body>
-<form action="landing.php" method="post" id="login">
+<form action="" method="post" id="login">
     <header>
         <h1>Přihlášení</h1>
     </header>
@@ -23,7 +23,7 @@
         <input type="submit" value="Přihlásit">
     </main>
     <footer>
-        <a href="signup.html">Nemáte účet? Zaregistrujte se</a>
+        <a href="signup.php">Nemáte účet? Zaregistrujte se</a>
     </footer>
 </form>
 </body>
