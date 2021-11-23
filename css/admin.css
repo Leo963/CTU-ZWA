@@ -4,10 +4,24 @@ section.main {
     height: calc(100vh - 100px);
     grid-template-columns: 1fr;
     grid-template-rows: 80px 1fr;
+    padding: 0 25px;
 }
 
-section.main > h2 {
+section.main h2 {
     align-self: center;
+    justify-self: center;
+}
+
+#withJS {
+    display: grid;
+    grid-template-rows: 50px 50px 1fr;
+}
+
+nav.admin {
+    padding: 10px;
+    height: auto;
+    max-height: 100px;
+    background-color: var(--background-dark);
 }
 
 .tabs {
@@ -42,7 +56,7 @@ section.main > h2 {
 }
 
 @media (prefers-color-scheme: dark) {
-    section.main > h2 {
+    section.main h2 {
         color: white;
     }
 

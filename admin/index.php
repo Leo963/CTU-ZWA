@@ -27,6 +27,12 @@
         </div>
         <div class="tab" id="students-tab">
             <h3>Studenti</h3>
+            <hr>
+            <nav class="admin">
+                <button>Nový student</button>
+            </nav>
+            <hr>
+            
         </div>
         <div class="tab" id="subjects-tab">
             <h3>Předměty</h3>
