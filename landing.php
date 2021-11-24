@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="css/landing.css" media="screen">
     <link rel="stylesheet" href="css/print-landing.css" media="print">
 </head>
+<?php
+    require_once "init.php";
+    $test = new DataLayer();
+?>
 <body>
 <?php include 'header.html'?>
 <div class="content">
     <?php include 'nav.html'?>
     <section class="main">
-        <h4>Dnes je datum</h4>
+        <h4>Dnes je <?= date("d.m.Y") ?></h4>
         <article>
             <header>
                 <h2>Nadcházející</h2>

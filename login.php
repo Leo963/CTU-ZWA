@@ -1,3 +1,27 @@
+<?php
+require_once 'init.php';
+
+$badLogin = 0;
+
+$users = new UserRepository($dataLayer);
+if (
+    isset(
+        $_POST['username'],
+        $_POST['pass']
+    )
+) {
+    $return = $users->getUserPassword($_POST['username']);
+
+    if(isset($return['pass']) && password_verify($_POST['pass'],$return['pass'])) {
+        header('Location: landing.php');
+        die();
+    } else {
+        $badLogin = 1;
+    }
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +36,16 @@
         <h1>Přihlášení</h1>
     </header>
     <main>
+        <?php
+        if ($badLogin === 1)
+            echo "<div class='error'>
+                <h3>Špatné jméno nebo heslo</h3>
+            </div>"
+        ?>
         <label>
             Uživatelské jméno
-            <input type="text" name="username" id="username" required>
+            <input type="text" name="username" id="username" value="<?php if (isset($_POST['username']))
+                echo htmlspecialchars($_POST['username'])?>" required>
         </label>
         <label>
             Heslo
