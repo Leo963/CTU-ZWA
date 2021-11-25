@@ -3,6 +3,8 @@ CREATE TABLE `users` (
   `fname` varchar(255),
   `lname` varchar(255),
   `email` varchar(255),
+  `uname` varchar(255),
+  `pass` varchar(255),
   `dob` date,
   `role` int,
   `subject` int,
