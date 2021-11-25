@@ -90,6 +90,12 @@ a:hover:before {
     border-width: 3px 3px 0 0;
 }
 
+div.error {
+   text-align: center;
+    background-color: #ff6e6e;
+    color: red;
+}
+
 
 @media (prefers-color-scheme: dark) {
     body > header, nav, article > header, nav a, header a {
