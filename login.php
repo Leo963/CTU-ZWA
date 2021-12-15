@@ -12,7 +12,8 @@ if (
 ) {
     $return = $users->getUserPassword($_POST['username']);
 
-    if(isset($return['pass']) && password_verify($_POST['pass'],$return['pass'])) {
+    if(isset($return) && password_verify($_POST['pass'],$return)) {
+        $_SESSION['user'] = $_POST['username'];
         header('Location: landing.php');
         die();
     } else {

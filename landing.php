@@ -9,10 +9,10 @@
 </head>
 <?php
     require_once "init.php";
-    $test = new DataLayer();
+    $urepo = new UserRepository($dataLayer)
 ?>
 <body>
-<?php include 'header.html'?>
+<?php include 'header.php' ?>
 <div class="content">
     <?php include 'nav.html'?>
     <section class="main">

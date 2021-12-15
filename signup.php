@@ -5,6 +5,7 @@ const VALID = 0;
 const SHORTUSERNAME = 1;
 const SHORTPASSWORD = 2;
 const TOOYOUNG = 4;
+const NOTCOMPLEX = 8;
 
 $badValue = VALID;
 
@@ -19,16 +20,19 @@ function validate(int &$badValue) :bool
     $currDate = new DateTime('now');
     if (strlen($_POST['username']) < 6) {
         $badValue |= SHORTUSERNAME;
-        return false;
     }
     if (strlen($_POST['pass']) < 8) {
         $badValue |= SHORTPASSWORD;
-        return false;
     }
     if (date_create_from_format('Y-m-d',$_POST['dob'])->diff($currDate)->y <=14) {
         $badValue |= TOOYOUNG;
-        return false;
     }
+    if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$%&*()=+\-_\[\]{};:'|,<.>\/?€]).{8,}$/",$_POST['pass'])) {
+        $badValue |= NOTCOMPLEX;
+    }
+
+    if ($badValue != VALID)
+        return false;
     return true;
 }
 
@@ -50,6 +54,7 @@ if (
             $_POST['username'],
             password_hash($_POST['pass'],PASSWORD_BCRYPT)
         );
+        $_SESSION['user'] = $_POST['username'];
         header('Location: landing.php');
         die();
     }
@@ -81,6 +86,8 @@ if (
                     echo "<h3>Příliš krátké heslo</h3>";
                 if ($badValue & TOOYOUNG)
                     echo "<h3>Tato služba je dostupná až od 15 let</h3>";
+                if ($badValue & NOTCOMPLEX)
+                    echo "<h3>Heslo není dostatečně složité</h3>";
             echo "</div>"
         ?>
         <fieldset>
@@ -115,7 +122,8 @@ if (
             </label>
             <label>
                 Heslo
-                <input type="password" name="pass" id="pass" required>
+                <input type="password" name="pass" id="pass"
+                       pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()=+\-_\[\]\{\};:'\x22\\|,<.>/?€]).{8,}$" required>
             </label>
         </fieldset>
     </main>

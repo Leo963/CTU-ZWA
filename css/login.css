@@ -96,4 +96,8 @@ label:not(.optional) {
         padding: 0 25px 25px 25px;
     }
 
+    div.error {
+        grid-column: span 2;
+    }
+
 }

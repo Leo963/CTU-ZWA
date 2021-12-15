@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="css/user.css">
 </head>
 <body>
-<?php include 'header.html' ?>
+<?php
+require_once 'init.php';
+include 'header.php';
+?>
 <div class="content">
     <?php include 'nav.html' ?>
 

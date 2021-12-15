@@ -29,17 +29,26 @@ class UserRepository extends Repository
     }
 
     /**
+     * Function retrieves all information about the user
+     * @param string $username Username of the user whose information you are retrieving
+     * @return array|false
+     */
+    public function getUser(string $username) {
+        return $this->dataLayer->selectOne(
+            "SELECT * FROM users WHERE uname = :uname",
+            [
+                ":uname" => $username
+            ]
+        );
+    }
+
+    /**
      * Function that retrieves users hashed password from database
      * @param string $username Username of a user whose password should be retrieved
      * @return array|false
      */
     public function getUserPassword(string $username)
     {
-        return $this->dataLayer->selectOne(
-            "SELECT pass FROM users WHERE uname = :uname",
-            [
-                ":uname" => $username
-            ]
-        );
+        return $this->getUser($username)["pass"];
     }
 }
