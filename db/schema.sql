@@ -1,12 +1,17 @@
+DROP DATABASE IF EXISTS kaufmlu1;
+CREATE DATABASE IF NOT EXISTS kaufmlu1;
+
+USE kaufmlu1;
+
 CREATE TABLE `users` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `fname` varchar(255),
   `lname` varchar(255),
   `email` varchar(255),
+  `uname` varchar(255),
+  `pass` varchar(255),
   `dob` date,
-  `role` int,
-  `subject` int,
-  `class` int
+  `role` int
 );
 
 CREATE TABLE `roles` (
@@ -56,11 +61,11 @@ ALTER TABLE `users` ADD FOREIGN KEY (`role`) REFERENCES `roles` (`id`);
 
 ALTER TABLE `classes` ADD FOREIGN KEY (`type`) REFERENCES `classTypes` (`id`);
 
-ALTER TABLE `usersToSubjects` ADD FOREIGN KEY (`user`) REFERENCES `users` (`subject`);
+ALTER TABLE `usersToSubjects` ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 
 ALTER TABLE `usersToSubjects` ADD FOREIGN KEY (`subject`) REFERENCES `subjects` (`id`);
 
-ALTER TABLE `usersToClasses` ADD FOREIGN KEY (`user`) REFERENCES `users` (`class`);
+ALTER TABLE `usersToClasses` ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`);
 
 ALTER TABLE `usersToClasses` ADD FOREIGN KEY (`class`) REFERENCES `classes` (`id`);
 
