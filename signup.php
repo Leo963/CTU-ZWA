@@ -36,7 +36,7 @@ function validate(int &$badValue) :bool
     return true;
 }
 
-$users = new UserRepository($dataLayer);
+
 if (
        isset(
            $_POST['fname'],

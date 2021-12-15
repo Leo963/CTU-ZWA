@@ -1,16 +1,13 @@
 <?php
 
+require_once("Config.php");
+
 /**
  * Database connection layer
  */
 
 class DataLayer
 {
-    const HOSTNAME = 'localhost';
-    const USERNAME = 'kaufmlu1';
-    const PASSWORD = 'webova semestralka';
-    const DBNAME = 'kaufmlu1';
-
     protected PDO $conn;
 
     /**
@@ -18,9 +15,9 @@ class DataLayer
      */
     public function __construct()
     {
-        $this->conn = new PDO('mysql:host=' . self::HOSTNAME . ';dbname=' . self::DBNAME,
-            self::USERNAME,
-            self::PASSWORD);
+        $this->conn = new PDO('mysql:host=' . Config::HOSTNAME . ';dbname=' . Config::DBNAME,
+            Config::USERNAME,
+            Config::PASSWORD);
         $this->conn->query('SET NAMES utf8');
     }
 
