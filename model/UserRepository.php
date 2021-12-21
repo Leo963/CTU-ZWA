@@ -9,14 +9,14 @@ class UserRepository extends Repository
      * Function that creates a user in database
      * @param string $fname
      * @param string $lname
-     * @param $dob
+     * @param string $dob in format YYYY-MM-DD
      * @param string $username
      * @param string $pass
      */
     public function createUser(string $fname, string $lname, $dob, string $username, string $pass) {
         $this->dataLayer->insert(
-            "INSERT INTO users (fname,lname,dob,uname,pass)
-                 VALUES (:fname,:lname,:dob,:uname,:pass)",
+            "INSERT INTO users (fname,lname,dob,uname,pass,role)
+                 VALUES (:fname,:lname,:dob,:uname,:pass,4)",
             [
                 ":fname" => $fname,
                 ":lname" => $lname,
@@ -50,5 +50,25 @@ class UserRepository extends Repository
     public function getUserPassword(string $username)
     {
         return $this->getUser($username)["pass"];
+    }
+
+    /**
+     * Function that updates users password to a new one
+     * @param string $username
+     * @param int $id
+     * @param string $password
+     * @return false|PDOStatement False if update has failed
+     */
+    public function updatePassword(string $username, int $id, string $password) :bool {
+        return $this->dataLayer->update(
+            "UPDATE users 
+                SET pass = :password
+                WHERE id = :id AND uname = :uname",
+            [
+                ":password" => $password,
+                ":id" => $id,
+                ":uname" => $username
+            ]
+        );
     }
 }

@@ -18,6 +18,21 @@
 <?php include '../header.php' ?>
 <section class="main">
     <noscript>
+        <div>
+            <h2>Administrační rozcestník</h2>
+            <div class="tab" id="students">
+                <h3>Studenti</h3>
+                <hr>
+                <nav class="admin">
+                    <button>Nový student</button>
+                </nav>
+                <hr>
+
+            </div>
+            <div class="tab" id="subjects">
+                <h3>Předměty</h3>
+            </div>
+        </div>
     </noscript>
     <div id="withJS">
         <h2>Administrační rozcestník</h2>

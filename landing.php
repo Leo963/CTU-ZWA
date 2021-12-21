@@ -9,12 +9,12 @@
 </head>
 <?php
     require_once "init.php";
-    $urepo = new UserRepository($dataLayer)
+    $_SESSION['role'] = $users->getUser($_SESSION['user'])['role'];
 ?>
 <body>
 <?php include 'header.php' ?>
 <div class="content">
-    <?php include 'nav.html'?>
+    <?php include 'nav.php' ?>
     <section class="main">
         <h4>Dnes je <?= date("d.m.Y") ?></h4>
         <article>

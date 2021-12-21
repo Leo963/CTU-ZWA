@@ -13,7 +13,7 @@ include 'header.php';
 ?>
 <div class="content">
 
-    <?php include 'nav.html' ?>
+    <?php include 'nav.php' ?>
     <section class="main">
         <h2>Dostupné předměty</h2>
         <div class="sub-list">

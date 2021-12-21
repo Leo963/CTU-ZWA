@@ -32,7 +32,7 @@ if (
     <script src="js/login.js"></script>
 </head>
 <body>
-<form action="" method="post" id="login">
+<form action="login.php" method="post" id="login">
     <header>
         <h1>Přihlášení</h1>
     </header>

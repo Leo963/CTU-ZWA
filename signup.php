@@ -46,14 +46,16 @@ if (
            $_POST['pass']
        )
 ) {
+
     if(validate($badValue)){
-        $users->createUser(
+         $users->createUser(
             $_POST['fname'],
             $_POST['lname'],
             $_POST['dob'],
             $_POST['username'],
             password_hash($_POST['pass'],PASSWORD_BCRYPT)
         );
+
         $_SESSION['user'] = $_POST['username'];
         header('Location: landing.php');
         die();
@@ -72,38 +74,39 @@ if (
     <script src="js/signup.js"></script>
 </head>
 <body>
-<form action="" method="post" class="signup" id="signup">
+<form action="signup.php" method="post" class="signup" id="signup">
     <header>
         <h1>Registrace</h1>
     </header>
     <main>
         <?php
-        if ($badValue != VALID)
+        if ($badValue != VALID) {
             echo "<div class='error'>";
-                if ($badValue & SHORTUSERNAME)
-                    echo "<h3>Příliš krátké uživatelské jméno</h3>";
-                if ($badValue & SHORTPASSWORD)
-                    echo "<h3>Příliš krátké heslo</h3>";
-                if ($badValue & TOOYOUNG)
-                    echo "<h3>Tato služba je dostupná až od 15 let</h3>";
-                if ($badValue & NOTCOMPLEX)
-                    echo "<h3>Heslo není dostatečně složité</h3>";
-            echo "</div>"
+            if ($badValue & SHORTUSERNAME)
+                echo "<h3>Příliš krátké uživatelské jméno</h3>";
+            if ($badValue & SHORTPASSWORD)
+                echo "<h3>Příliš krátké heslo</h3>";
+            if ($badValue & TOOYOUNG)
+                echo "<h3>Tato služba je dostupná až od 15 let</h3>";
+            if ($badValue & NOTCOMPLEX)
+                echo "<h3>Heslo není dostatečně složité</h3>";
+            echo "</div>";
+        }
         ?>
         <fieldset>
             <legend>Osobní údaje</legend>
             <label>
-                Jméno
+                Jméno *
                 <input type="text" name="fname" id="fname" required
                        value="<?php if(isset($_POST['fname'])) echo htmlspecialchars($_POST['fname']) ?>">
             </label>
             <label>
-                Příjmení
+                Příjmení *
                 <input type="text" name="lname" id="lname" required
                        value="<?php if(isset($_POST['lname'])) echo htmlspecialchars($_POST['lname']) ?>">
             </label>
             <label>
-                Datum narození
+                Datum narození *
                 <input type="date" name="dob" id="dob" required
                        value="<?php if(isset($_POST['dob'])) echo htmlspecialchars($_POST['dob']) ?>">
             </label>
@@ -116,12 +119,12 @@ if (
                        value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email']) ?>">
             </label>
             <label>
-                Uživatelské jméno
+                Uživatelské jméno *
                 <input type="text" name="username" id="username" required
                        value="<?php if(isset($_POST['username'])) echo htmlspecialchars($_POST['username']) ?>">
             </label>
             <label>
-                Heslo
+                Heslo *
                 <input type="password" name="pass" id="pass"
                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$%^&*()=+\-_\[\]\{\};:'\x22\\|,<.>/?€]).{8,}$" required>
             </label>
