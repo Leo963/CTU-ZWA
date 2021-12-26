@@ -21,7 +21,12 @@ class DataLayer
                 Config::PASSWORD);
             $this->conn->query('SET NAMES utf8');
         } catch (PDOException $e) {
-            header('Location: dberror.html');
+            if (strpos($_SERVER['PHP_SELF'],'admin/')) {
+                header('Location: ../dberror.php?url='.$_SERVER['PHP_SELF']);
+            } else {
+                header('Location: dberror.php?url='.$_SERVER['PHP_SELF']);
+            }
+
         }
     }
 
