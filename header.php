@@ -6,6 +6,14 @@
                 echo htmlspecialchars($user["fname"] . " " . $user["lname"]);
             }
             ?></a>
-        <a href="logout.php">Odhlásit se</a>
+        <?php
+        if (strpos($_SERVER['PHP_SELF'],'admin/')) {
+            echo '<a href="../logout.php">Odhlásit se</a>';
+        }
+        else {
+            echo '<a href="logout.php">Odhlásit se</a>';
+        }
+
+        ?>
     </h2>
 </header>

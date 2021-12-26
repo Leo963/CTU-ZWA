@@ -15,10 +15,14 @@ class DataLayer
      */
     public function __construct()
     {
-        $this->conn = new PDO('mysql:host=' . Config::HOSTNAME . ';dbname=' . Config::DBNAME,
-            Config::USERNAME,
-            Config::PASSWORD);
-        $this->conn->query('SET NAMES utf8');
+        try {
+            $this->conn = new PDO('mysql:host=' . Config::HOSTNAME . ';dbname=' . Config::DBNAME,
+                Config::USERNAME,
+                Config::PASSWORD);
+            $this->conn->query('SET NAMES utf8');
+        } catch (PDOException $e) {
+            header('Location: dberror.html');
+        }
     }
 
     /**

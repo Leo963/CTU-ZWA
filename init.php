@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Administrator levels go from 1 and up
+ * Level 2 is a teacher who has the access to students and subjects
+ */
+const MAX_ADMIN_LEVEL = 2;
+
 session_start();
 
 spl_autoload_register(function ($className)
@@ -21,4 +27,8 @@ if (!(strpos($_SERVER['PHP_SELF'],'login.php') || strpos($_SERVER['PHP_SELF'],'s
         header('Location: logout.php');
         die();
     }
+}
+
+if (strpos($_SERVER['PHP_SELF'],'admin/') && (!isset($_SESSION['role']) || (isset($_SESSION['role']) && $_SESSION['role'] > MAX_ADMIN_LEVEL))) {
+    header('Location: ../landing.php');
 }

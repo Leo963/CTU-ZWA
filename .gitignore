@@ -1,4 +1,5 @@
 /LaTeX
 /.idea
 *.pdf
+docs/
 model/Config.php

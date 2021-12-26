@@ -1,0 +1,11 @@
+@import url('vars.css');
+
+* {
+    font-family: Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--background-dark);
+    color: var(--foreground-dark);
+    text-align: center;
+}

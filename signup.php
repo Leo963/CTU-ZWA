@@ -1,10 +1,25 @@
 <?php
 require_once 'init.php';
 
+/**
+ * Bitwise 0 represents a valid signup
+ */
 const VALID = 0;
+/**
+ * Bitwise 1 represents a signup invalid because of too short username
+ */
 const SHORTUSERNAME = 1;
+/**
+ * Bitwise 2 represents a signup invalid because of too short password
+ */
 const SHORTPASSWORD = 2;
+/**
+ * Bitwise 4 represents a signup invalid because of age being younger than 15
+ */
 const TOOYOUNG = 4;
+/**
+ * Bitwise 8 represents a signup invalid because of password not complex enough
+ */
 const NOTCOMPLEX = 8;
 
 $badValue = VALID;
