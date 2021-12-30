@@ -19,6 +19,10 @@ article.subject > h3.code, article.subject > button.detail, article.subject > h3
     align-self: center;
 }
 
+h3.name {
+    padding: 0 10px;
+}
+
 article.subject > h3 {
     margin: 0;
 }
@@ -60,9 +64,6 @@ a#left:hover, a#right:hover {
     background-color: var(--button-hover);
 }
 
-a > img {
-    min-height: 1ex;
-}
 
 @media (prefers-color-scheme: dark) {
     article.subject {

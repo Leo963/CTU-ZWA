@@ -10,6 +10,18 @@
 <?php
 require_once 'init.php';
 include 'header.php';
+
+/**
+ * Clamps an integer value between max and min values
+ * @param int $value Value to be clamped
+ * @param int $min Lower bound inclusive
+ * @param int $max Upper boudn inclusive
+ * @return int Clamped value
+ */
+function clamp (int $value, int $min, int $max) :int {
+    return max($min,min($max, $value));
+}
+
 ?>
 <div class="content">
 
@@ -18,49 +30,92 @@ include 'header.php';
         <h2>Dostupné předměty</h2>
         <div class="sub-list">
             <section class="list">
-                <article class="subject">
-                    <h3 class="code">Kód</h3>
-                    <h3 class="name">Název</h3>
-                    <button class="detail">Detail</button>
-                </article>
-                <article class="subject">
-                    <h3 class="code">Kód</h3>
-                    <h3 class="name">Název</h3>
-                    <button class="detail">Detail</button>
-                </article>
-                <article class="subject">
-                    <h3 class="code">Kód</h3>
-                    <h3 class="name">Název</h3>
-                    <button class="detail">Detail</button>
-                </article>
-                <article class="subject">
-                    <h3 class="code">Kód</h3>
-                    <h3 class="name">Název</h3>
-                    <button class="detail">Detail</button>
-                </article>
-                <article class="subject">
-                    <h3 class="code">Kód</h3>
-                    <h3 class="name">Název</h3>
-                    <button class="detail">Detail</button>
-                </article>
-                <article class="subject">
-                    <h3 class="code">Kód</h3>
-                    <h3 class="name">Název</h3>
-                    <button class="detail">Detail</button>
-                </article>
+                <?php
+                    const ITEMS_PER_PAGE = 5;
+                    $srepo = new SubjectRepository($dataLayer);
+                    $maxItems = $srepo->countSubjects();
+                    $pages = ceil($maxItems / ITEMS_PER_PAGE);
+
+
+                    if (!isset($_GET['page'])) {
+                        $subjects = $srepo->getPaginatedSubjects();
+                        $_GET['page'] = 1;
+                    } elseif (is_numeric($_GET['page'])) {
+                        $subjects = $srepo->getPaginatedSubjects((clamp($_GET['page'],1,$pages)-1) * ITEMS_PER_PAGE);
+                    } else {
+                        $subjects = $srepo->getPaginatedSubjects();
+                        $_GET['page'] = 1;
+                    }
+
+
+                    foreach ($subjects as $subject) {
+                        echo "<article class='subject'>
+                    <h3 class='code'>$subject[code]</h3>
+                    <h3 class='name'>$subject[name]</h3>
+                    <form action=''></form>
+                    <button class='detail' value='$subject[id]'>Detail</button>
+                </article>";
+                    }
+                ?>
             </section>
             <nav>
-                <a href="" id="left">
-                    <img src="assets/leftarrow.svg" alt="Previous page in list">
-                </a>
-                <a href="">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a href="">4</a>
-                <a href="">5</a>
-                <a href="" id="right">
-                    <img src="assets/rightarrow.svg" alt="Next page in list">
-                </a>
+                <?php
+                $navStruct = "";
+                if ($_GET['page'] == 1) {
+                    // "&laquo; &lsaquo;"  "&rsaquo; &raquo;"
+                    $navStruct .= "<a href='?page=1'> &laquo; </a> <a href='?page=1'> &lsaquo; </a>";
+                    $navStruct .= "<a href='?page=".($_GET['page'])."'>".($_GET['page'])."</a>";
+                    $navStruct .= "<a href='?page=".($_GET['page']+1)."'>".($_GET['page']+1)."</a>";
+                    $navStruct .= "<a href='?page=".($_GET['page']+2)."'>".($_GET['page']+2)."</a>";
+
+                    if ($_GET['page']+2 == $pages-1) {
+                        $navStruct .= "<a href='?page=$pages'> $pages </a>";
+                    }
+                    if ($_GET['page']+2 < $pages-1) {
+                        $navStruct .= " ...";
+                        $navStruct .= "<a href='?page=$pages'> $pages </a>";
+                    }
+
+                    $navStruct .= "<a href='?page=".($_GET['page']+1)."'> &rsaquo; </a> <a href='?page=$pages'> &raquo; </a>";
+                }
+                elseif ($_GET['page'] == $pages) {
+                    $navStruct .= "<a href='?page=1'> &laquo; </a> <a href='?page=".($_GET['page']-1)."'> &lsaquo; </a>";
+
+                    if ($_GET['page']-1 > 2) {
+                        $navStruct .= "<a href='?page=1'>1</a>";
+                        $navStruct .= " ...";
+                    }
+
+                    $navStruct .= "<a href='?page=".($_GET['page']-2)."'>".($_GET['page']-2)."</a>";
+                    $navStruct .= "<a href='?page=".($_GET['page']-1)."'>".($_GET['page']-1)."</a>";
+                    $navStruct .= "<a href='?page=".($_GET['page'])."'>".($_GET['page'])."</a>";
+                    $navStruct .= "<a href='?page=$pages'> &rsaquo; </a> <a href='?page=$pages'> &raquo; </a>";
+                }
+                else {
+                    $navStruct .= "<a href='?page=1'> &laquo; </a> <a href='?page=".($_GET['page']-1)."'> &lsaquo; </a>";
+                    if ($_GET['page']-1 == 2) {
+                        $navStruct .= "<a href='?page=1'>1</a>";
+                    }
+                    if ($_GET['page']-1 > 2) {
+                        $navStruct .= "<a href='?page=1'>1</a>";
+                        $navStruct .= " ...";
+                    }
+                    $navStruct .= "<a href='?page=".($_GET['page']-1)."'>".($_GET['page']-1)."</a>";
+                    $navStruct .= "<a href='?page=".($_GET['page'])."'>".($_GET['page'])."</a>";
+                    $navStruct .= "<a href='?page=".($_GET['page']+1)."'>".($_GET['page']+1)."</a>";
+
+                    if ($_GET['page']+1 == $pages-1) {
+                        $navStruct .= "<a href='?page=$pages'> $pages </a>";
+                    }
+                    if ($_GET['page']+1 < $pages-1) {
+                        $navStruct .= " ...";
+                        $navStruct .= "<a href='?page=$pages'> $pages </a>";
+                    }
+
+                    $navStruct .= "<a href='?page=".($_GET['page']+1)."'> &rsaquo; </a> <a href='?page=$pages'> &raquo; </a>";
+                }
+                echo $navStruct;
+                ?>
             </nav>
         </div>
     </section>

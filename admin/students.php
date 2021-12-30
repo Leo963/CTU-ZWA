@@ -16,6 +16,7 @@ include '../header.php'
     <?php include_once '../nav.php' ?>
     <section class="main">
         <h2>Studenti</h2>
+
     </section>
 </div>
 </body>
