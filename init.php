@@ -6,6 +6,9 @@
  */
 const MAX_ADMIN_LEVEL = 2;
 
+date_default_timezone_set("Europe/Prague");
+setlocale(LC_ALL, 'czech.utf8');
+
 session_start();
 
 spl_autoload_register(function ($className)

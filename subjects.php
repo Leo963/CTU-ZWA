@@ -52,8 +52,9 @@ function clamp (int $value, int $min, int $max) :int {
                         echo "<article class='subject'>
                     <h3 class='code'>$subject[code]</h3>
                     <h3 class='name'>$subject[name]</h3>
-                    <form action=''></form>
-                    <button class='detail' value='$subject[id]'>Detail</button>
+                    <form action='detail.php'>
+                    <button class='detail' name='id' value='$subject[id]'>Detail</button>
+                    </form>
                 </article>";
                     }
                 ?>

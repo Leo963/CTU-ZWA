@@ -20,3 +20,14 @@ INSERT INTO kaufmlu1.subjects (name, code) VALUES ('Umělá inteligence','B02-AI
 INSERT INTO kaufmlu1.subjects (name, code) VALUES ('Návrh uživatelského prostředí','B02-UX');
 INSERT INTO kaufmlu1.subjects (name, code) VALUES ('Telekomunikace','B02-TK');
 INSERT INTO kaufmlu1.subjects (name, code) VALUES ('Taktické plánování','A02-TP');
+
+INSERT INTO classtypes (id, name) VALUES (1, 'Přednáška');
+INSERT INTO classtypes (id, name) VALUES (2, 'Cvičení');
+INSERT INTO classtypes (id, name) VALUES (3, 'Laboratoře');
+
+INSERT INTO classes (subjectId, type, timeOfDay, dayOfWeek, location, teacher) VALUES (1,1,110000,1, 'T2:D3-309', 1);
+INSERT INTO classes (subjectId, type, timeOfDay, dayOfWeek, location, teacher) VALUES (1,2,143000,1, 'KN:E-311', 2);
+INSERT INTO classes (subjectId, type, timeOfDay, dayOfWeek, location, teacher) VALUES (1,2,161500,1, 'KN:E-311', 2);
+INSERT INTO classes (subjectId, type, timeOfDay, dayOfWeek, location, teacher) VALUES (1,2,103000,2, 'KN:E-311', 2);
+INSERT INTO classes (subjectId, type, timeOfDay, dayOfWeek, location, teacher) VALUES (1,2,161500,2, 'KN:E-311', 2);
+

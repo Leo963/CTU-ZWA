@@ -9,7 +9,8 @@ class SubjectRepository extends Repository
      * Returns all subjects in the database
      * @return array|false
      */
-    function getAllSubjects() {
+    function getAllSubjects()
+    {
         return $this->dataLayer->selectAll(
             "SELECT * FROM subjects"
         );
@@ -20,7 +21,8 @@ class SubjectRepository extends Repository
      * @param int $offset Offset of the entries, default 0
      * @param int $limit Limit of the number of elements per page, default 5
      */
-    function getPaginatedSubjects(int $offset = 0, int $limit = 5) {
+    function getPaginatedSubjects(int $offset = 0, int $limit = 5)
+    {
         return $this->dataLayer->selectAll(
             "SELECT * FROM subjects LIMIT $limit OFFSET $offset"
         );
@@ -31,7 +33,8 @@ class SubjectRepository extends Repository
      * @param int $offset Offset of the entries, default 0
      * @param int $limit Limit of the number of elements per page, default 5
      */
-    function getPaginatedSubjectsAlphabet(int $offset = 0, int $limit = 5) {
+    function getPaginatedSubjectsAlphabet(int $offset = 0, int $limit = 5)
+    {
         return $this->dataLayer->selectAll(
             "SELECT * FROM subjects ORDER BY name LIMIT $limit OFFSET $offset"
         );
@@ -40,10 +43,41 @@ class SubjectRepository extends Repository
     /**
      * @return false|int returns false when there is an error and the count of subjects if all is right
      */
-    function countSubjects() {
+    function countSubjects()
+    {
         $result = $this->dataLayer->selectOne(
             "SELECT COUNT(*) FROM subjects"
         );
         return $result ? (int)$result[0] : false;
+    }
+
+    /**
+     * TODO
+     * @param $id int Id of the subject to retrieve
+     * @return array|false
+     */
+    public function getSubjectByid(int $id)
+    {
+        return $this->dataLayer->selectOne(
+            "SELECT * FROM subjects WHERE id = :id",
+            [
+                ":id" => $id
+            ]
+        );
+    }
+
+    /**
+     * TODO
+     * @param $id
+     * @return array|false
+     */
+    public function getSubjectDetailsById(int $id)
+    {
+        return $this->dataLayer->selectOne(
+            "SELECT * FROM subjectdetails WHERE id = :id",
+            [
+                ":id" => $id
+            ]
+        );
     }
 }
