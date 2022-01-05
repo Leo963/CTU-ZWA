@@ -1,9 +1,10 @@
 <?php
+
 require_once 'init.php';
 
 $crepo = new ClassRepository($dataLayer);
 try {
-    if($crepo->signUpUserToClass($_POST['student'],$_POST['class'])) {
+    if ($crepo->signOffUserFromClass($_POST['student'], $_POST['class'])) {
         $success = 1;
     } else {
         $success = 0;

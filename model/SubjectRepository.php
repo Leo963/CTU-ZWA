@@ -1,3 +1,4 @@
+);
 <?php
 
 /**
@@ -30,14 +31,32 @@ class SubjectRepository extends Repository
 
     /**
      * Gets subjects for pagination, ordered alphabetically
+     * @param array $dir
+     * @param array $orderby
      * @param int $offset Offset of the entries, default 0
      * @param int $limit Limit of the number of elements per page, default 5
      */
-    function getPaginatedSubjectsAlphabet(int $offset = 0, int $limit = 5)
+    function getPaginatedSubjectsOrdered(array $dir = [], array $orderby = [], int $offset = 0, int $limit = 5)
     {
-        return $this->dataLayer->selectAll(
-            "SELECT * FROM subjects ORDER BY name LIMIT $limit OFFSET $offset"
-        );
+        if (empty($orderby)) {
+            return $this->dataLayer->selectAll(
+                "SELECT * FROM subjects ORDER BY name LIMIT $limit OFFSET $offset"
+            );
+        } else {
+            $query = "SELECT * FROM subjects ORDER BY ";
+            for ($i = 0; $i < count($orderby); $i++) {
+                if ($i == count($orderby) - 1) {
+                    $query .= $orderby[$i] . " " . $dir[$i] . " ";
+                } else {
+                    $query .= $orderby[$i] . " " . $dir[$i] . ", ";
+                }
+
+            }
+            $query .= "LIMIT $limit OFFSET $offset";
+            return $this->dataLayer->selectAll(
+                $query
+            );
+        }
     }
 
     /**

@@ -1,9 +1,10 @@
 @import url('vars.css');
-
 section.main {
     height: calc(100vh - 100px);
     grid-template-columns: 1fr;
     grid-template-rows: 80px 1fr;
+    align-items: start;
+    justify-items: center;
     padding: 0 25px;
 }
 
@@ -12,63 +13,32 @@ section.main h2 {
     justify-self: center;
 }
 
-#withJS {
-    display: grid;
-    grid-template-rows: 50px 50px 1fr;
+table {
+    max-width: 80%;
+    color: var(--foreground-light);
 }
 
-nav.admin {
-    padding: 10px;
-    height: auto;
-    max-height: 100px;
-    background-color: var(--background-dark);
+table, th, td {
+    border: 1px solid var(--foreground-light);
+    border-collapse: collapse;
 }
 
-.tabs {
-    overflow: hidden;
-    border: 1px solid #ccc;
+td, th {
+    padding: 0.5ex;
+    font-size: 1.5em;
 }
 
-.tab {
-    display: none;
-}
-
-.tab.active {
-    display: block;
-}
-
-.tabs button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-}
-
-.tabs button:hover {
-    background-color: #555;
-}
-
-.tabs button.active {
-    background-color: #333;
-}
 
 @media (prefers-color-scheme: dark) {
     section.main h2 {
         color: white;
     }
 
-    .tab {
+    thead > tr th, table {
         color: var(--foreground-dark);
     }
 
-    .tabs button {
-        color: white;
-    }
-
-    .tabs {
-        border-color: var(--background-dark);
+    table, th, td {
+        border-color: var(--foreground-dark);
     }
 }

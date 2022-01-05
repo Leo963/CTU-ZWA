@@ -58,8 +58,9 @@ if (
            $_POST['lname'],
            $_POST['dob'],
            $_POST['username'],
-           $_POST['pass']
-       )
+           $_POST['pass'],
+           $_POST['token']
+       ) && isTokenValid($_POST['token'])
 ) {
 
     if(validate($badValue)){
@@ -129,7 +130,7 @@ if (
         <fieldset>
             <legend>Přihlašovací údaje</legend>
             <label class="optional">
-                Email
+                Email (Volitelné)
                 <input type="email" name="email" id="email"
                        value="<?php if(isset($_POST['email'])) echo htmlspecialchars($_POST['email']) ?>">
             </label>
@@ -149,6 +150,7 @@ if (
         <input type="submit" value="Registrovat">
         <a href="login.php">Již máte účet? Přihlašte se</a>
     </footer>
+    <input type="hidden" name="token" value="<?= generateToken() ?>">
 </form>
 </body>
 </html>

@@ -3,14 +3,38 @@
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    column-gap: 5em;
-    padding: 0 10em;
+    column-gap: 1em;
+    padding: 0 3em;
 }
 
 .main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.main > h2 {
+    grid-column: span 2;
+}
+
+.classes {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.classes > .class {
+    background-color: var(--list-item-back-light);
+    color: var(--foreground-light);
+    display: grid;
+    grid-template-columns: 20% 80%;
+    margin: 0 0 15px 0;
+    max-width: 80%;
+    min-width: 75%;
+}
+
+section.class-info {
+    display: block;
 }
 
 fieldset {
@@ -33,12 +57,19 @@ fieldset > input[type=submit] {
     grid-column: 2;
 }
 
+article.settings {
+    text-align: center;
+}
 
 @media (prefers-color-scheme: dark) {
 
-    legend, label, .main > h2, fieldset > p {
+    legend, label, .main > h2, fieldset > p, article > h2 {
         color: var(--foreground-dark);
     }
 
+    .classes > .class {
+        background-color: var(--list-item-back-dark);
+        color: var(--foreground-dark);
+    }
 
 }

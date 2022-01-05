@@ -71,4 +71,26 @@ class UserRepository extends Repository
             ]
         );
     }
+
+    /**
+     * @return array|false
+     */
+    public function getAllUsers()
+    {
+        return $this->dataLayer->selectAll(
+            "SELECT u.id, u.dob, u.uname username, CONCAT(u.fname, ' ', u.lname) fullname, r.name as role FROM users u
+                    INNER JOIN roles r on u.role = r.id"
+        );
+    }
+
+    /**
+     * @return array|false
+     */
+    public function getAllStudents()
+    {
+        return $this->dataLayer->selectAll(
+            "SELECT u.id, u.dob, u.uname username, CONCAT(u.fname, ' ', u.lname) fullname FROM users u
+                    WHERE u.role = 3"
+        );
+    }
 }

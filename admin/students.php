@@ -1,22 +1,89 @@
+<?php
+require_once '../init.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Administrace - Studenti</title>
+    <title>Administrace - <?php if ($_SESSION['role'] == 1) echo "Uživatelé"; else echo "Studenti"; ?></title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/admin.css">
     <script src="../js/admin.js"></script>
 </head>
 <body>
 <?php
-require_once '../init.php';
+
+$urepo = new UserRepository($dataLayer);
+
+/**
+ * @param array $users
+ * @return string
+ */
+function generateUsers(array $users, bool $admin) :string
+{
+    $userStruct = "";
+
+    foreach ($users as $user) {
+        $userStruct .= "<tr>";
+        $userStruct .= "<td>$user[username]</td>";
+        $userStruct .= "<td>$user[fullname]</td>";
+        $userStruct .= "<td>$user[dob]</td>";
+        if ($admin) {
+            $userStruct .= "<td>$user[role]</td>";
+        }
+        $userStruct .= "<td><form action='userDetail.php' method='post'>
+<input type='hidden' name='id' value='$user[id]'>
+<input type='submit' value='Detail'>
+</form></td>";
+        $userStruct .= "</tr>";
+    }
+
+    return $userStruct;
+}
+
 include '../header.php'
 ?>
 <div class="content">
     <?php include_once '../nav.php' ?>
     <section class="main">
-        <h2>Studenti</h2>
-
+        <h2><?php if ($_SESSION['role'] == 1) echo "Uživatelé"; else echo "Studenti"; ?></h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Uživatelské jméno</th>
+                <th>Jméno</th>
+                <th>Datum Narození</th>
+                <?php if ($_SESSION['role'] == 1) echo "<th>Role</th>"; ?>
+                <th>Detail</th>
+            </tr>
+            <tr>
+                <th>
+                    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                        <label><input type="text" name="username-search"></label>
+                        <input type="submit" value="Hledat">
+                    </form>
+                </th>
+                <th>
+                    <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
+                        <label><input type="text" name="fullname-search"></label>
+                        <input type="submit" value="Hledat">
+                    </form>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                <?php
+                if ($_SESSION['role'] == 1) {
+                    $users = $urepo->getAllUsers();
+                } else {
+                    $users = $urepo->getAllStudents();
+                }
+                echo generateUsers($users, $_SESSION['role'] == 1);
+                ?>
+            </tbody>
+        </table>
     </section>
 </div>
 </body>

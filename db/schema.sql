@@ -45,15 +45,6 @@ CREATE TABLE `usersToClasses` (
   `class` int
 );
 
-CREATE TABLE `grades` (
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `student` int,
-  `teacher` int,
-  `subject` int,
-  `grade` int,
-  `title` varchar(255)
-);
-
 CREATE TABLE `classes` (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `subjectId` int,
@@ -95,18 +86,6 @@ ALTER TABLE `usersToClasses` ADD FOREIGN KEY (`class`) REFERENCES `classes` (`id
     ON UPDATE CASCADE
     ON DELETE SET NULL;
 
-ALTER TABLE `grades` ADD FOREIGN KEY (`student`) REFERENCES `users` (`id`)
-    ON UPDATE CASCADE
-    ON DELETE NO ACTION;
-
-ALTER TABLE `grades` ADD FOREIGN KEY (`teacher`) REFERENCES `users` (`id`)
-    ON UPDATE CASCADE
-    ON DELETE RESTRICT;
-
-ALTER TABLE `grades` ADD FOREIGN KEY (`subject`) REFERENCES `subjects` (`id`)
-    ON UPDATE CASCADE
-    ON DELETE SET NULL;
-
 ALTER TABLE `classes` ADD FOREIGN KEY (`subjectId`) REFERENCES `subjects` (`id`)
     ON UPDATE CASCADE
     ON DELETE RESTRICT;
@@ -118,6 +97,8 @@ ALTER TABLE `subjectDetails` ADD FOREIGN KEY (`id`) REFERENCES `subjects` (id)
 ALTER TABLE `classes` ADD FOREIGN KEY (`teacher`) REFERENCES `users` (id)
     ON UPDATE CASCADE
     ON DELETE RESTRICT;
+
+ALTER TABLE `usersToClasses` ADD CONSTRAINT `uniqueCombo` UNIQUE(`user`,`class`);
 
 CREATE TRIGGER `createDetail` AFTER INSERT ON subjects
     FOR EACH ROW INSERT INTO subjectDetails (id) VALUES (NEW.id);

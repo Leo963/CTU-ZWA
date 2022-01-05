@@ -25,10 +25,12 @@ if (isset($_GET['id'])) {
  * @param array $classes
  * @return string
  */
-function prepareClasses(array $classes): string
+function prepareClasses(array $classes, ClassRepository &$crepo): string
 {
+
     $lectureStruct = "";
     foreach ($classes as $lecture) {
+        $signedUp = $crepo->isUserAlreadySignedUp($_SESSION['user'],$lecture['id']);
         $lectureStruct .= "<div class='class'>";
         $lectureStruct .= "
                     <header>
@@ -46,14 +48,27 @@ function prepareClasses(array $classes): string
                     <section class='class'>
                         <h2>$lecture[teacher]</h2>
                         <p>$lecture[location]</p>
-                        <form action='subjectsignup.php' method='POST'>
+                        ";
+        if ($signedUp) {
+            $lectureStruct .= "<form action='subjectsignoff.php' method='post'>";
+        } else {
+            $lectureStruct .= "<form action='subjectsignup.php' method='post'>";
+        }
+
+        $lectureStruct .= "
                             <input type='hidden' name='student' value='$_SESSION[user]'>
                             <input type='hidden' name='class' value='$lecture[id]'>
                             <input type='hidden' name='detail' value='$_GET[id]'>
-                            <input type='submit' value='Zapsat'>
-                        </form>
-                    </section>";
-        $lectureStruct .= "</div>";
+                            ";
+        if ($signedUp) {
+            $lectureStruct .= "<input type='submit' value='Odhlásit' >";
+        } else {
+            $lectureStruct .= "<input type='submit' value='Zapsat' >";
+        }
+
+        $lectureStruct .= "</form>
+                    </section>
+        </div>";
     }
     return $lectureStruct;
 }
@@ -100,22 +115,22 @@ include 'header.php';
             <article class="classes">
                 <?php
                 if ($lectures) {
-                    echo "<fieldset>".
-                    "<legend>Přednášky</legend>".
-                    prepareClasses($lectures).
-                    "</fieldset>";
+                    echo "<fieldset>" .
+                        "<legend>Přednášky</legend>" .
+                        prepareClasses($lectures, $crepo) .
+                        "</fieldset>";
                 }
                 if ($practicals) {
-                    echo "<fieldset>".
-                    "<legend>Cvičení</legend>".
-                    prepareClasses($practicals).
-                    "</fieldset>";
+                    echo "<fieldset>" .
+                        "<legend>Cvičení</legend>" .
+                        prepareClasses($practicals, $crepo) .
+                        "</fieldset>";
                 }
                 if ($labs) {
-                    echo "<fieldset>".
-                    "<legend>Laboratoře</legend>".
-                    prepareClasses($labs).
-                    "</fieldset>";
+                    echo "<fieldset>" .
+                        "<legend>Laboratoře</legend>" .
+                        prepareClasses($labs, $crepo) .
+                        "</fieldset>";
                 }
                 ?>
             </article>

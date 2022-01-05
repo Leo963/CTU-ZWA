@@ -11,6 +11,34 @@ setlocale(LC_ALL, 'czech.utf8');
 
 session_start();
 
+
+/**
+ * Generates a validation token
+ * @return string
+ */
+function generateToken() {
+    $token = md5(mt_rand());
+    if (!isset($_SESSION['tokens'])){
+        $_SESSION['tokens'] = array($token => 1);
+    } else {
+        $_SESSION['tokens'][$token] = 1;
+    }
+    return $token;
+}
+
+/**
+ * Checks if token is valid and if it is valid invalidates it
+ * @param string $token token to be checked
+ * @return bool if token is valid
+ */
+function isTokenValid(string $token) :bool {
+    if (!empty($_SESSION['tokens'][$token])){
+        unset($_SESSION['tokens'][$token]);
+        return true;
+    }
+    return false;
+}
+
 spl_autoload_register(function ($className)
 {
     /** @noinspection PhpIncludeInspection */
