@@ -72,6 +72,17 @@ input[type=submit] {
     font-size: 1.25em;
 }
 
+div.error {
+    text-align: center;
+    background-color: #ffd7d7;
+    color: red;
+    border-radius: 5px;
+}
+
+label:not(.optional) {
+    font-weight: bold;
+}
+
 @media screen and (min-width: 750px) {
     form.signup > main {
         grid-template-columns: 1fr 1fr;
@@ -83,6 +94,10 @@ input[type=submit] {
 
     footer {
         padding: 0 25px 25px 25px;
+    }
+
+    div.error {
+        grid-column: span 2;
     }
 
 }

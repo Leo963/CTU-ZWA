@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <title>Landing page</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/landing.css" media="screen">
-    <link rel="stylesheet" href="css/print-landing.css" media="print">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
+<?php
+    require_once "init.php";
+    $_SESSION['role'] = $users->getUser($_SESSION['user'])['role'];
+?>
 <body>
-<?php include 'header.html'?>
+<?php include 'header.php' ?>
 <div class="content">
-    <?php include 'nav.html'?>
+    <?php include 'nav.php' ?>
     <section class="main">
-        <h4>Dnes je datum</h4>
+        <h4>Dnes je <?= date("d.m.Y") ?></h4>
         <article>
             <header>
                 <h2>Nadcházející</h2>

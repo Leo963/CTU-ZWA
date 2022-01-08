@@ -1,0 +1,107 @@
+#properties {
+    display: grid;
+    padding: 0 10em;
+}
+
+textarea {
+    resize: none;
+    overflow: hidden;
+    margin-bottom: 2.5em;
+}
+
+section.main {
+    text-align: center;
+}
+
+section.main > h2 {
+    grid-column: span 2;
+}
+
+label[for] {
+    justify-self: start;
+}
+
+form#properties > input[type='submit'] {
+    width: 25%;
+    justify-self: center;
+    padding: 10px 15px;
+}
+
+.class > *, .class > header > * {
+    margin: 0;
+    place-self: center;
+}
+.classes {
+    display: grid;
+    grid-template-rows: 80px 80px auto;
+    justify-items: center;
+    padding: 20px 0;
+}
+
+div.class > header {
+    padding: 10px;
+    grid-column: auto;
+}
+
+article.classes > fieldset {
+    width: 80%;
+}
+
+div.class {
+    display: grid;
+    grid-template-columns: 25% 75%;
+    height: 100px;
+    width: 100%;
+    background-color: var(--list-item-back-light);
+}
+
+.classes > a {
+    padding: 10px 15px;
+    border: 1px solid var(--background-dark);
+    align-self: center;
+    font-weight: bold;
+}
+
+.classes > a:hover {
+    font-weight: bold;
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+    -webkit-transition: background-color 500ms ease-in-out;
+    transition: background-color 500ms ease-in-out;
+}
+
+.classes > a:hover:before {
+    display: none;
+}
+
+.error {
+    color: #0000C2;
+    font-weight: bold;
+}
+
+@media (prefers-color-scheme: dark) {
+
+    h2, h3, legend, label {
+        color: var(--foreground-dark);
+    }
+
+    .classes > a {
+        border-color: var(--background-light);
+        color: var(--foreground-dark);
+    }
+
+    .classes > a:hover {
+        color: black;
+        -webkit-transition: color 500ms linear, background-color 500ms ease-in-out;
+        transition: color 500ms linear, background-color 500ms ease-in-out;
+    }
+
+    .error {
+        color: #FFFD8E;
+    }
+
+    div.class {
+        background-color: var(--list-item-back-dark);
+        color: #EBEBEB;
+    }
+}

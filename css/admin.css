@@ -1,60 +1,72 @@
 @import url('vars.css');
-
 section.main {
     height: calc(100vh - 100px);
     grid-template-columns: 1fr;
     grid-template-rows: 80px 1fr;
+    align-items: start;
+    justify-items: center;
+    padding: 0 25px;
 }
 
-section.main > h2 {
+section.main h2 {
     align-self: center;
+    justify-self: center;
 }
 
-.tabs {
-    overflow: hidden;
-    border: 1px solid #ccc;
+table {
+    max-width: 80%;
+    color: var(--foreground-light);
 }
 
-.tab {
+table, th, td {
+    border: 1px solid var(--foreground-light);
+    border-collapse: collapse;
+}
+
+td, th {
+    padding: 0.5ex;
+    font-size: 1.5em;
+}
+
+th > a {
+    color: var(--foreground-light);
+    align-self: center;
+    font-weight: bold;
+}
+
+th > a:hover:before {
     display: none;
 }
 
-.tab.active {
-    display: block;
+th > a:hover, th#newSubject:hover {
+    font-weight: bold;
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+    -webkit-transition: background-color 500ms ease-in-out;
+    transition: background-color 500ms ease-in-out;
 }
 
-.tabs button {
-    background-color: inherit;
-    float: left;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 14px 16px;
-    transition: 0.3s;
-}
-
-.tabs button:hover {
-    background-color: #555;
-}
-
-.tabs button.active {
-    background-color: #333;
-}
 
 @media (prefers-color-scheme: dark) {
-    section.main > h2 {
+    section.main h2 {
         color: white;
     }
 
-    .tab {
+    thead > tr th, table {
         color: var(--foreground-dark);
     }
 
-    .tabs button {
-        color: white;
+    table, th, td {
+        border-color: var(--foreground-dark);
     }
 
-    .tabs {
-        border-color: var(--background-dark);
+    th > a {
+        color: var(--foreground-dark);
+    }
+
+    th > a:hover {
+        color: black;
+        -webkit-transition: color 500ms linear, background-color 500ms ease-in-out;
+        transition: color 500ms linear, background-color 500ms ease-in-out;
     }
 }
