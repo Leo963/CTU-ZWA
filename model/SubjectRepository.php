@@ -1,4 +1,3 @@
-);
 <?php
 
 /**
@@ -86,16 +85,98 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * TODO
+     * Gets
      * @param $id
      * @return array|false
      */
     public function getSubjectDetailsById(int $id)
     {
         return $this->dataLayer->selectOne(
-            "SELECT * FROM subjectdetails WHERE id = :id",
+            "SELECT * FROM subjectdetails sd INNER JOIN subjects s on sd.id = s.id WHERE s.id = :id",
             [
                 ":id" => $id
+            ]
+        );
+    }
+
+    /**
+     * @return array|false
+     */
+    public function getAllSubjectsWithDetails()
+    {
+        return $this->dataLayer->selectAll(
+            "SELECT * FROM subjects s INNER JOIN subjectdetails s2 on s.id = s2.id ORDER BY s.code"
+        );
+    }
+
+    /**
+     * @param string $code
+     * @return array|false
+     */
+    public function getSubjectsCodeSearch(string $code)
+    {
+        return $this->dataLayer->selectAll(
+            "SELECT * FROM subjects s INNER JOIN subjectdetails s2 on s.id = s2.id
+                    WHERE s.code LIKE (:code)
+                    ORDER BY s.code",
+            [
+                ":code" => "%" . $code . "%"
+            ]
+        );
+    }
+
+    /**
+     * @param string $name
+     * @return array|false
+     */
+    public function getSubjectsNameSearch(string $name)
+    {
+        return $this->dataLayer->selectAll(
+            "SELECT * FROM subjects s INNER JOIN subjectdetails s2 on s.id = s2.id
+                    WHERE s.name LIKE (:name)
+                    ORDER BY s.code",
+            [
+                ":name" => "%" . $name . "%"
+            ]
+        );
+    }
+
+    /**
+     * @param int $id
+     * @param string $anotation
+     * @param string $description
+     * @param int $length
+     */
+    public function updateDetails(int $id, string $anotation, string $description, int $length)
+    {
+        $this->dataLayer->update(
+            "UPDATE subjectdetails
+                    SET anotation = :anotation,
+                    description = :description,
+                    length = :length
+                    WHERE id = :id",
+            [
+                ":id" => $id,
+                ":anotation" => $anotation,
+                ":description" => $description,
+                ":length" => $length
+            ]
+        );
+    }
+
+    /**
+     * @param string $code
+     * @param string $name
+     * @return string
+     */
+    public function newSubject(string $code, string $name)
+    {
+        return $this->dataLayer->insertID(
+            "INSERT INTO subjects (name, code) 
+                    VALUES (:name, :code)",
+            [
+                ":name" => $name,
+                ":code" => $code
             ]
         );
     }

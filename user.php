@@ -119,7 +119,7 @@ include 'header.php';
         <article class="classes">
             <h2>Zapsané předměty</h2>
             <?php
-                echo prepareClasses($crepo->getUsersClasses($_SESSION['user']));
+                echo prepareClassesAdmin($crepo->getUsersClasses($_SESSION['user']));
             ?>
         </article>
     </section>

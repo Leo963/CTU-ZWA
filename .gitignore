@@ -1,5 +1,5 @@
 /LaTeX
 /.idea
 *.pdf
-docs/
 model/Config.php
+phpinfo.php

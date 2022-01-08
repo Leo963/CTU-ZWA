@@ -7,9 +7,18 @@
     padding: 0 3em;
 }
 
+.container#admin {
+    display: block;
+}
+
 .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    text-align: center;
+}
+
+.main.admin {
+    display: block;
     text-align: center;
 }
 
@@ -44,6 +53,17 @@ fieldset {
     text-align: right;
 }
 
+fieldset#props {
+    display: block;
+}
+
+form#propForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.5em;
+    text-align: right;
+}
+
 fieldset > p {
     font-size: 0.9em;
     grid-column: span 2;
@@ -60,6 +80,7 @@ fieldset > input[type=submit] {
 article.settings {
     text-align: center;
 }
+
 
 @media (prefers-color-scheme: dark) {
 

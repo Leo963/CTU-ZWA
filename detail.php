@@ -1,21 +1,18 @@
-<!doctype html>
 <?php
 require_once 'init.php';
 
-const LECTURE = 1;
-const PRACTICAL = 2;
-const LAB = 3;
-const CLASSLENGTH = "+1 hour +30 minutes";
 
 $srepo = new SubjectRepository($dataLayer);
 $crepo = new ClassRepository($dataLayer);
 
+
+
 if (isset($_GET['id'])) {
     $subject = $srepo->getSubjectByid($_GET['id']);
     $subjectDetails = $srepo->getSubjectDetailsById($_GET['id']);
-    $lectures = $crepo->getClassesBySubjectIdAndType($_GET['id'], LECTURE);
-    $practicals = $crepo->getClassesBySubjectIdAndType($_GET['id'], PRACTICAL);
-    $labs = $crepo->getClassesBySubjectIdAndType($_GET['id'], LAB);
+    $lectures = $crepo->getClassesBySubjectIdAndType($_GET['id'], Helper::LECTURE);
+    $practicals = $crepo->getClassesBySubjectIdAndType($_GET['id'], Helper::PRACTICAL);
+    $labs = $crepo->getClassesBySubjectIdAndType($_GET['id'], Helper::LAB);
 } else {
     header('Location: subjects.php');
     die();
@@ -23,14 +20,15 @@ if (isset($_GET['id'])) {
 
 /**
  * @param array $classes
+ * @param ClassRepository $crepo
  * @return string
  */
-function prepareClasses(array $classes, ClassRepository &$crepo): string
+function prepareClasses(array $classes, ClassRepository $crepo): string
 {
 
     $lectureStruct = "";
     foreach ($classes as $lecture) {
-        $signedUp = $crepo->isUserAlreadySignedUp($_SESSION['user'],$lecture['id']);
+        $signedUp = $crepo->isUserAlreadySignedUp($_SESSION['user'], $lecture['id']);
         $lectureStruct .= "<div class='class'>";
         $lectureStruct .= "
                     <header>
@@ -40,7 +38,7 @@ function prepareClasses(array $classes, ClassRepository &$crepo): string
                         <span><time>" .
             date('H:i', strtotime($lecture['timeOfDay'])) . "
                         </time>-<time>" .
-            date('H:i', strtotime(CLASSLENGTH, strtotime($lecture['timeOfDay']))) . "
+            date('H:i', strtotime(Helper::CLASSLENGTH, strtotime($lecture['timeOfDay']))) . "
                         </time></span>
                     </header>
                     ";
@@ -74,10 +72,11 @@ function prepareClasses(array $classes, ClassRepository &$crepo): string
 }
 
 ?>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?= $subject['code'] ?> - Detail</title>
+    <title><?= htmlspecialchars($subject['code']) ?> - Detail</title>
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/detail.css">
 </head>
@@ -102,6 +101,11 @@ include 'header.php';
                 <fieldset>
                     <p>Délka předmětu: <?= $subjectDetails['length'] ?> týdnů</p>
                     <p>Formát předmětu:
+                        <?= $subjectDetails['lectures'] > 0 ? 1 : 0 ?>P+
+                        <?= $subjectDetails['practicals'] > 0 ? 1 : 0 ?>C+
+                        <?= $subjectDetails['labs'] > 0 ? 1 : 0 ?>L
+                    </p>
+                    <p>Dostupné paralelky předmětu:
                         <?= $subjectDetails['lectures'] ?>P+
                         <?= $subjectDetails['practicals'] ?>C+
                         <?= $subjectDetails['labs'] ?>L

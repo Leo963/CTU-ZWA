@@ -77,12 +77,29 @@ function generateUsername(event) {
 }
 
 /**
+ * Checks if the current username is not already used
+ * @param {Event} event event variable
+ */
+function checkUsername(event) {
+    let xrq = new XMLHttpRequest();
+    // eslint-disable-next-line func-names
+    xrq.onload = function() {
+        if (this.responseText === '400') {
+            alert('Uživatelské jméno již existuje');
+        }
+    };
+    xrq.open('GET', `checkuser.php?uname=${document.querySelector(`#${ event.target.id}`).value}`);
+    xrq.send();
+}
+
+/**
  * Initializes EventListeners on the load of the window
  */
 function init() {
     document.querySelector('#signup').addEventListener('submit', validate);
     document.querySelector('#fname').addEventListener('blur', generateUsername);
     document.querySelector('#lname').addEventListener('blur', generateUsername);
+    document.querySelector('#username').addEventListener('focusout', checkUsername);
 }
 
 window.addEventListener('load', init);

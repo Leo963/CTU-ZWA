@@ -64,13 +64,19 @@ if (
 ) {
 
     if(validate($badValue)){
-         $users->createUser(
+        $users->createUser(
             $_POST['fname'],
             $_POST['lname'],
             $_POST['dob'],
             $_POST['username'],
             password_hash($_POST['pass'],PASSWORD_BCRYPT)
         );
+        if (isset($_POST['email'])) {
+            $users->setEmail(
+                $_POST['username'],
+                $_POST['email']
+            );
+        }
 
         $_SESSION['user'] = $_POST['username'];
         header('Location: landing.php');

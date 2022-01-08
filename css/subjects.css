@@ -51,8 +51,13 @@ div.sub-list > nav > a {
     padding: 0 0 0 10px;
 }
 
-a#left:hover:before, a#right:hover:before, div.sub-list > nav > a:hover:before {
+div.sub-list > header {
+    display: flex;
+}
+
+a#left:hover:before, a#right:hover:before, div.sub-list > nav > a:hover:before, h3 a:hover:before {
     display: none;
+    font-weight: bold;
 }
 
 a#left, a#right {
@@ -72,6 +77,10 @@ a#left:hover, a#right:hover {
     }
 
     .main > h2 {
+        color: var(--foreground-dark);
+    }
+
+    header {
         color: var(--foreground-dark);
     }
 }

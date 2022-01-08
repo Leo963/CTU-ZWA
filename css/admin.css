@@ -28,6 +28,24 @@ td, th {
     font-size: 1.5em;
 }
 
+th > a {
+    color: var(--foreground-light);
+    align-self: center;
+    font-weight: bold;
+}
+
+th > a:hover:before {
+    display: none;
+}
+
+th > a:hover, th#newSubject:hover {
+    font-weight: bold;
+    background-color: var(--button-hover);
+    border-color: var(--button-hover);
+    -webkit-transition: background-color 500ms ease-in-out;
+    transition: background-color 500ms ease-in-out;
+}
+
 
 @media (prefers-color-scheme: dark) {
     section.main h2 {
@@ -40,5 +58,15 @@ td, th {
 
     table, th, td {
         border-color: var(--foreground-dark);
+    }
+
+    th > a {
+        color: var(--foreground-dark);
+    }
+
+    th > a:hover {
+        color: black;
+        -webkit-transition: color 500ms linear, background-color 500ms ease-in-out;
+        transition: color 500ms linear, background-color 500ms ease-in-out;
     }
 }

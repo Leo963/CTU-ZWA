@@ -50,12 +50,12 @@ $users = new UserRepository($dataLayer);
 
 if (!(strpos($_SERVER['PHP_SELF'],'login.php') || strpos($_SERVER['PHP_SELF'],'signup.php'))) {
     if (!isset($_SESSION['user'])) {
-        header('Location: login.php');
+        header('Location: /Semestralka/login.php');
         die();
     }
 
     if (!$users->getUser($_SESSION['user'])) {
-        header('Location: logout.php');
+        header('Location: /Semestralka/logout.php');
         die();
     }
 }

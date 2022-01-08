@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Landing page</title>
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/landing.css" media="screen">
-    <link rel="stylesheet" href="css/print-landing.css" media="print">
+    <link rel="stylesheet" href="css/landing.css">
 </head>
 <?php
     require_once "init.php";

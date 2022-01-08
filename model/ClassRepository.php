@@ -31,7 +31,7 @@ class ClassRepository extends Repository
             "SELECT c.id, c.dayOfWeek, c.timeOfDay, c.location, CONCAT(u.fname, ' ', u.lname) teacher
                     FROM kaufmlu1.classes c INNER JOIN users u ON c.teacher = u.id
                     WHERE subjectId = :sid AND type = :type
-                    ORDER BY c.dayOfWeek",
+                    ORDER BY c.dayOfWeek, c.timeOfDay",
             [
                 ":sid" => $id,
                 ":type" => $type
@@ -110,6 +110,72 @@ class ClassRepository extends Repository
             [
                 ":user" => $urepo->getUser($student)['id'],
                 ":class" => $class
+            ]
+        );
+    }
+
+    /**
+     * @param int $id
+     * @return bool
+     */
+    public function isAnyoneSignedUp(int $id) :bool
+    {
+        return $this->dataLayer->selectOne(
+            "SELECT count(*) as count FROM userstoclasses WHERE class = :class",
+            [
+                ":class" => $id
+            ]
+        )['count'] > 0 ? true : false;
+    }
+
+    /**
+     * @param int $class
+     */
+    public function deleteClass(int $class)
+    {
+        $this->dataLayer->delete(
+            "DELETE FROM classes WHERE id = :id",
+            [
+                ":id" => $class
+            ]
+        );
+    }
+
+    /**
+     * @return array|false
+     */
+    public function getAllTypes()
+    {
+        return $this->dataLayer->selectAll("SELECT * FROM classtypes");
+    }
+
+    /**
+     * @param int $type
+     * @param int $teacher
+     * @param string $timeOfDay
+     * @param int $dayOfWeek
+     * @param string $location
+     * @param int $subject
+     */
+    public function addNewClass(int $type, int $teacher, string $timeOfDay, int $dayOfWeek, string $location, int $subject)
+    {
+        $this->dataLayer->insert(
+            "INSERT INTO classes (subjectId, type, timeOfDay, dayOfWeek, location, teacher) 
+                    VALUES (
+                            :subject,
+                            :type,
+                            :timeOfDay,
+                            :dayOfWeek,
+                            :location,
+                            :teacher
+                    )",
+            [
+                ":subject" => $subject,
+                ":type" => $type,
+                ":timeOfDay" => $timeOfDay,
+                ":dayOfWeek" => $dayOfWeek,
+                ":location" => $location,
+                ":teacher" => $teacher
             ]
         );
     }

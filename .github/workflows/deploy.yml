@@ -45,3 +45,11 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
+      - name: scp-docs
+        uses: garygrossgarten/github-action-scp@v0.7.3
+          with:
+            local: docs
+            remote: /home/kaufmlu1/www/dokumentace
+            host: ${{ secrets.HOST }}
+            username: ${{ secrets.SSH_USER }}
+            password: ${{ secrets.PASSWORD }}

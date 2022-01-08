@@ -15,11 +15,12 @@ require_once '../init.php';
 
 $urepo = new UserRepository($dataLayer);
 
+
 /**
  * @param array $users
  * @return string
  */
-function generateUsers(array $users, bool $admin) :string
+function generateUsers(array $users, bool $admin): string
 {
     $userStruct = "";
 
@@ -59,13 +60,17 @@ include '../header.php'
             <tr>
                 <th>
                     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-                        <label><input type="text" name="username-search"></label>
+                        <label><input type="text" name="username-search"<?php
+                            if (isset($_POST['username-search'])) echo "value=" . htmlspecialchars($_POST['username-search']);
+                            ?>></label>
                         <input type="submit" value="Hledat">
                     </form>
                 </th>
                 <th>
                     <form action="<?= $_SERVER['PHP_SELF'] ?>" method="post">
-                        <label><input type="text" name="fullname-search"></label>
+                        <label><input type="text" name="fullname-search"<?php
+                            if (isset($_POST['fullname-search'])) echo "value=" . htmlspecialchars($_POST['fullname-search']);
+                            ?>></label>
                         <input type="submit" value="Hledat">
                     </form>
                 </th>
@@ -74,14 +79,31 @@ include '../header.php'
             </tr>
             </thead>
             <tbody>
-                <?php
+            <?php
+            if (isset($_POST['username-search']) || isset($_POST['fullname-search'])) {
+                if (isset($_POST['username-search'])) {
+                    if ($_SESSION['role'] == 1) {
+                        $users = $urepo->getUsersUsernameSearch($_POST['username-search']);
+                    } else {
+                        $users = $urepo->getStudentsUsernameSearch($_POST['username-search']);
+                    }
+                } elseif (isset($_POST['fullname-search'])) {
+                    if ($_SESSION['role'] == 1) {
+                        $users = $urepo->getUsersFullnameSearch($_POST['fullname-search']);
+                    } else {
+                        $users = $urepo->getStudentsFullnameSearch($_POST['fullname-search']);
+                    }
+                }
+            } else {
                 if ($_SESSION['role'] == 1) {
                     $users = $urepo->getAllUsers();
                 } else {
                     $users = $urepo->getAllStudents();
                 }
-                echo generateUsers($users, $_SESSION['role'] == 1);
-                ?>
+            }
+
+            echo generateUsers($users, $_SESSION['role'] == 1);
+            ?>
             </tbody>
         </table>
     </section>
