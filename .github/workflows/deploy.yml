@@ -11,7 +11,6 @@ jobs:
       - name: create deploy folder
         run: |
           mkdir deploy
-          cp *.html deploy
           cp *.php deploy
       - name: scp-root
         uses: garygrossgarten/github-action-scp@v0.7.3
