@@ -15,11 +15,11 @@ require_once 'init.php';
 $user = $users->getUser($_SESSION['user']);
 $crepo = new ClassRepository($dataLayer);
 
+const CLASSLENGTH = "+1 hour +30 minutes";
 
 /**
- * Prepares, composites and returns HTML representation of classes
- * @param array $classes classes to be comopsited as HTML
- * @return string composited HTML
+ * @param array $classes
+ * @return string
  */
 function prepareClasses(array $classes): string
 {
@@ -34,7 +34,7 @@ function prepareClasses(array $classes): string
                         <span><time>" .
             date('H:i', strtotime($lecture['timeOfDay'])) . "
                         </time>-<time>" .
-            date('H:i', strtotime(Helper::CLASSLENGTH, strtotime($lecture['timeOfDay']))) . "
+            date('H:i', strtotime(CLASSLENGTH, strtotime($lecture['timeOfDay']))) . "
                         </time></span>
                     </header>
                     ";

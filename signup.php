@@ -30,7 +30,7 @@ $badValue = VALID;
 
 
 /**
- * Validates the inputs in {@link $_POST} against
+ * Validates
  * @param $badValue int Reference to bad value
  * @return bool If values passed validation
  */

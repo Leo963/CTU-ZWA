@@ -19,10 +19,9 @@ if (isset($_GET['id'])) {
 }
 
 /**
- * Creates and returns HTML that represents the list of classes that has been provided
- * @param array $classes list of classes
- * @param ClassRepository $crepo class repository used to check whether a user is already signed up
- * @return string composed HTML code to show classes
+ * @param array $classes
+ * @param ClassRepository $crepo
+ * @return string
  */
 function prepareClasses(array $classes, ClassRepository $crepo): string
 {
@@ -95,6 +94,7 @@ include 'header.php';
         </header>
         <div class="data">
             <article class="info">
+                <h2>Informace o předmětu</h2>
                 <fieldset>
                     <legend>Anotace</legend>
                     <p><?= htmlspecialchars($subjectDetails['anotation']) ?></p>
@@ -118,6 +118,7 @@ include 'header.php';
                 </fieldset>
             </article>
             <article class="classes">
+                <h2>Dostupné paralelky</h2>
                 <?php
                 if ($lectures) {
                     echo "<fieldset>" .

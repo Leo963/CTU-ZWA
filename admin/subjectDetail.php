@@ -56,7 +56,7 @@ function prepareClassesAdmin(array $classes, ClassRepository $crepo): string
             $lectureStruct .= "<p class='error'>Uživatelé již mají tuto paralelku zapsanou</p>";
             $lectureStruct .= "<form action='deleteClass.php' method='post'>
             <label>
-                Opravdu checte smazat?
+                Opravdu chcete smazat?
                 <input type='checkbox' name='check' value='1' required>
             </label>
             <input type='submit' name='delete' value='Smazat'>
@@ -83,8 +83,6 @@ function prepareClassesAdmin(array $classes, ClassRepository $crepo): string
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/subjectDetail.css">
@@ -114,13 +112,13 @@ include '../header.php';
                 <label for="description">
                     Popis
                 </label>
-                <textarea name="description" id="anotation" cols="20" rows="10"
+                <textarea name="description" id="description" cols="20" rows="10"
                           maxlength="500"><?= htmlspecialchars($subject['description']) ?></textarea>
                 <input type="submit" value="Aktualizovat">
             </form>
         </article>
         <article class="classes">
-            <h2>Paraleky</h2>
+            <h2>Paralelky</h2>
             <a href="newClass.php?subject=<?= $_GET['id'] ?>">Přidat paralelku</a>
             <?php
             if ($lectures) {
