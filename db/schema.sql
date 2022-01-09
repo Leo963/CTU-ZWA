@@ -1,135 +1,123 @@
 DROP DATABASE IF EXISTS kaufmlu1;
-CREATE DATABASE IF NOT EXISTS kaufmlu1;
+CREATE DATABASE IF NOT EXISTS kaufmlu1 COLLATE utf8_czech_ci;
 
 USE kaufmlu1;
 
-CREATE TABLE `users`
+CREATE TABLE classtypes
 (
-    `id`    int PRIMARY KEY AUTO_INCREMENT,
-    `fname` varchar(255) NOT NULL,
-    `lname` varchar(255) NOT NULL,
-    `email` varchar(255),
-    `uname` varchar(255) NOT NULL,
-    `pass`  varchar(255),
-    `dob`   date         NOT NULL,
-    `role`  int          NOT NULL
+    id   int auto_increment
+        primary KEY,
+    name varchar(255) NULL
 );
 
-CREATE TABLE `roles`
+CREATE TABLE roles
 (
-    `id`   int PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(255)
+    id   int auto_increment
+        primary KEY,
+    name varchar(255) NULL
 );
 
-CREATE TABLE `subjects`
+CREATE TABLE subjects
 (
-    `id`   int PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(255),
-    `code` varchar(255)
+    id   int auto_increment
+        primary KEY,
+    name varchar(255) NULL,
+    code varchar(255) NULL
 );
 
-CREATE TABLE `subjectDetails`
+CREATE TABLE subjectdetails
 (
-    `id`          int PRIMARY KEY,
-    `anotation`   TEXT,
-    `description` TEXT,
-    `length`      int default(14),
-    `lectures`    int default(0),
-    `practicals`  int default(0),
-    `labs`        int default(0)
+    id          int            NOT NULL
+                    primary KEY,
+    anotation   text           NULL,
+    description text           NULL,
+    length      int default 14 NULL,
+    lectures    int default 0  NULL,
+    practicals  int default 0  NULL,
+    labs        int default 0  NULL,
+    CONSTRAINT subjectdetails_ibfk_1
+        FOREIGN KEY (id) references subjects (id)
+            ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE `usersToSubjects`
+CREATE TABLE users
 (
-    `user`    int,
-    `subject` int
+    id    int auto_increment
+        primary KEY,
+    fname varchar(255) NOT NULL,
+    lname varchar(255) NOT NULL,
+    email varchar(255) NULL,
+    uname varchar(255) NOT NULL,
+    pass  varchar(255) NULL,
+    dob   date         NOT NULL,
+    role  int          NOT NULL,
+    CONSTRAINT users_ibfk_1
+        FOREIGN KEY (role) references roles (id)
+            ON UPDATE CASCADE
 );
 
-CREATE TABLE `usersToClasses`
+CREATE TABLE classes
 (
-    `user`  int,
-    `class` int
+    id        int auto_increment
+        primary KEY,
+    subjectId int         NULL,
+    type      int         NULL,
+    timeOfDay time        NULL,
+    dayOfWeek int         NULL,
+    location  varchar(15) NULL,
+    teacher   int         NULL,
+    CONSTRAINT classes_ibfk_1
+        FOREIGN KEY (type) references classtypes (id)
+            ON UPDATE CASCADE ON DELETE SET NULL,
+    CONSTRAINT classes_ibfk_2
+        FOREIGN KEY (subjectId) references subjects (id)
+            ON UPDATE CASCADE,
+    CONSTRAINT classes_ibfk_3
+        FOREIGN KEY (teacher) references users (id)
+            ON UPDATE CASCADE
 );
 
-CREATE TABLE `classes`
+CREATE TABLE userstoclasses
 (
-    `id`        int PRIMARY KEY AUTO_INCREMENT,
-    `subjectId` int,
-    `type`      int,
-    `timeOfDay` time,
-    `dayOfWeek` int,
-    `location`  varchar(15),
-    `teacher`   int
+    user  int NULL,
+    class int NULL,
+    CONSTRAINT uniqueCombo
+        unique (user, class),
+    CONSTRAINT userstoclasses_ibfk_1
+        FOREIGN KEY (user) references users (id)
+            ON UPDATE CASCADE,
+    CONSTRAINT userstoclasses_ibfk_2
+        FOREIGN KEY (class) references classes (id)
+            ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE `classTypes`
-(
-    `id`   int PRIMARY KEY AUTO_INCREMENT,
-    `name` varchar(255)
-);
+CREATE INDEX subjectId
+    ON classes (subjectId);
 
+CREATE INDEX teacher
+    ON classes (teacher);
 
+CREATE INDEX type
+    ON classes (type);
 
-ALTER TABLE `users`
-    ADD FOREIGN KEY (`role`) REFERENCES `roles` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT;
+CREATE INDEX role
+    ON users (role);
 
-ALTER TABLE `classes`
-    ADD FOREIGN KEY (`type`) REFERENCES `classTypes` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE SET NULL;
+CREATE INDEX class
+    ON userstoclasses (class);
 
-ALTER TABLE `usersToSubjects`
-    ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT;
-
-ALTER TABLE `usersToSubjects`
-    ADD FOREIGN KEY (`subject`) REFERENCES `subjects` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT;
-
-ALTER TABLE `usersToClasses`
-    ADD FOREIGN KEY (`user`) REFERENCES `users` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT;
-
-ALTER TABLE `usersToClasses`
-    ADD FOREIGN KEY (`class`) REFERENCES `classes` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE;
-
-ALTER TABLE `classes`
-    ADD FOREIGN KEY (`subjectId`) REFERENCES `subjects` (`id`)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT;
-
-ALTER TABLE `subjectDetails`
-    ADD FOREIGN KEY (`id`) REFERENCES `subjects` (id)
-        ON UPDATE CASCADE
-        ON DELETE CASCADE;
-
-ALTER TABLE `classes`
-    ADD FOREIGN KEY (`teacher`) REFERENCES `users` (id)
-        ON UPDATE CASCADE
-        ON DELETE RESTRICT;
-
-ALTER TABLE `usersToClasses`
-    ADD CONSTRAINT `uniqueCombo` UNIQUE (`user`, `class`);
-
-CREATE TRIGGER `createDetail`
+CREATE trigger CREATEDetail
     AFTER INSERT
     ON subjects
-    FOR EACH ROW INSERT INTO subjectDetails (id)
-                 VALUES (NEW.id);
+    FOR EACH ROW
+    INSERT INTO subjectdetails (id)
+    VALUES (NEW.id);
 
-CREATE TRIGGER `updateDetails`
+CREATE trigger updateDetails
     AFTER INSERT
     ON classes
     FOR EACH ROW
-BEGIN
-    UPDATE subjectDetails
+    UPDATE subjectdetails
     SET lectures   = CASE
                          WHEN NEW.type = 1 THEN lectures + 1
                          ELSE lectures
@@ -143,14 +131,12 @@ BEGIN
                          ELSE labs
         END
     WHERE id = NEW.subjectId;
-END;
 
-CREATE TRIGGER `updateOnDeleteDetails`
+CREATE trigger updateOnDeleteDetails
     AFTER DELETE
     ON classes
     FOR EACH ROW
-BEGIN
-    UPDATE subjectDetails
+    UPDATE subjectdetails
     SET lectures   = CASE
                          WHEN OLD.type = 1 THEN lectures - 1
                          ELSE lectures
@@ -164,4 +150,3 @@ BEGIN
                          ELSE labs
         END
     WHERE id = OLD.subjectId;
-END;
