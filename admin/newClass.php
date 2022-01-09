@@ -7,6 +7,7 @@ if (!isset($_GET['subject'])) {
 }
 
 $crepo = new ClassRepository($dataLayer);
+$urepo = new UserRepository($dataLayer);
 
 if (isset(
         $_POST['type'],
@@ -15,7 +16,7 @@ if (isset(
         $_POST['dayOfWeek'],
         $_POST['location'],
         $_POST['token']
-    ) && isTokenValid($_POST['token'])) {
+    ) && isTokenValid($_POST['token']) && $urepo->isTeacher($_POST['teacher'])) {
     $crepo->addNewClass($_POST['type'],
         $_POST['teacher'],
         str_replace(":","",$_POST['timeOfDay'])."00",
@@ -26,7 +27,7 @@ if (isset(
     header('Location: subjectDetail.php?id='.$_GET['subject']);
 }
 
-$urepo = new UserRepository($dataLayer);
+
 $srepo = new SubjectRepository($dataLayer);
 
 
@@ -53,7 +54,7 @@ include '../header.php';
     <?php include '../nav.php' ?>
 
     <section class="main">
-        <h2>Nová paralelka - <?= $subject['code'] ?> - <?= $subject['name'] ?></h2>
+        <h2>Nová paralelka - <?= htmlspecialchars($subject['code']) ?> - <?= htmlspecialchars($subject['name']) ?></h2>
         <article class="settings">
             <h2>Vlastnosti</h2>
             <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
@@ -71,7 +72,7 @@ include '../header.php';
                     <?php
                     $teachers = $urepo->getAllTeachers();
                     foreach ($teachers as $teacher) {
-                        echo "<option value='$teacher[id]'>$teacher[fname] $teacher[lname]</option>";
+                        echo "<option value='$teacher[id]'>" . htmlspecialchars($teacher[fname]) . " " . htmlspecialchars($teacher[lname])."</option>";
                     }
                     ?>
                 </select>

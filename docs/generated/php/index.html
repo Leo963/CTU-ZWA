@@ -99,7 +99,7 @@
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/DataLayer.html"><abbr title="\DataLayer">DataLayer</abbr></a></dt>
         <dd>Database connection layer</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Helper.html"><abbr title="\Helper">Helper</abbr></a></dt>
-        <dd>Class to place functions or constants used in multiple files to reduce code duplication</dd>
+        <dd>Class with constants used in multiple files to reduce code duplication</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/Repository.html"><abbr title="\Repository">Repository</abbr></a></dt>
         <dd>Abstract base class</dd>
             <dt class="phpdocumentor-table-of-contents__entry -class"><a href="classes/SubjectRepository.html"><abbr title="\SubjectRepository">SubjectRepository</abbr></a></dt>
@@ -117,11 +117,11 @@
 
 <dl class="phpdocumentor-table-of-contents">
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
-    <a href="namespaces/default.html#constant_CLASSLENGTH">CLASSLENGTH</a>
+    <a href="namespaces/default.html#constant_ALREADYEXISTS">ALREADYEXISTS</a>
     <span>
-        &nbsp;= &quot;+1 hour +30 minutes&quot;                    </span>
+        &nbsp;= 16                    </span>
 </dt>
-<dd></dd>
+<dd>Bitwise 16 represents a signup invalid because of already existing username</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -constant -public">
     <a href="namespaces/default.html#constant_CLASSLENGTH">CLASSLENGTH</a>
@@ -206,7 +206,7 @@ Level 2 is a teacher who has the access to students and subjects</dd>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>Creates and returns HTML that represents the list of classes that has been provided</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_generateToken">generateToken()</a>
@@ -227,7 +227,7 @@ Level 2 is a teacher who has the access to students and subjects</dd>
     <span>
                         &nbsp;: bool    </span>
 </dt>
-<dd>Validates</dd>
+<dd>Validates the inputs in {@link $_POST} against</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_clamp">clamp()</a>
@@ -241,14 +241,14 @@ Level 2 is a teacher who has the access to students and subjects</dd>
     <span>
                         &nbsp;: mixed    </span>
 </dt>
-<dd></dd>
+<dd>Composites and obtains paginated subjects</dd>
 
             <dt class="phpdocumentor-table-of-contents__entry -function -">
     <a href="namespaces/default.html#function_prepareClasses">prepareClasses()</a>
     <span>
                         &nbsp;: string    </span>
 </dt>
-<dd></dd>
+<dd>Prepares, composites and returns HTML representation of classes</dd>
 
     </dl>
 
@@ -259,29 +259,29 @@ Level 2 is a teacher who has the access to students and subjects</dd>
             <a href="namespaces/default.html#constants" class="headerlink"><i class="fas fa-link"></i></a>
         </h3>
                     <article class="phpdocumentor-element -constant -public ">
-    <h4 class="phpdocumentor-element__name" id="constant_CLASSLENGTH">
-        CLASSLENGTH
-        <a href="namespaces/default.html#constant_CLASSLENGTH" class="headerlink"><i class="fas fa-link"></i></a>
+    <h4 class="phpdocumentor-element__name" id="constant_ALREADYEXISTS">
+        ALREADYEXISTS
+        <a href="namespaces/default.html#constant_ALREADYEXISTS" class="headerlink"><i class="fas fa-link"></i></a>
     </h4>
 
     <aside class="phpdocumentor-element-found-in">
-    <abbr class="phpdocumentor-element-found-in__file" title="user.php"><a href="files/user.html"><abbr title="user.php">user.php</abbr></a></abbr>
+    <abbr class="phpdocumentor-element-found-in__file" title="signup.php"><a href="files/signup.html"><abbr title="signup.php">signup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">16</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Bitwise 16 represents a signup invalid because of already existing username</p>
+
     <code class="phpdocumentor-signature phpdocumentor-code ">
     <span class="phpdocumentor-signature__visibility">public</span>
     <span class="phpdocumentor-signature__type">mixed</span>
-    <span class="phpdocumentor-signature__name">CLASSLENGTH</span>
-    = <span class="phpdocumentor-signature__default-value">&quot;+1 hour +30 minutes&quot;</span>
+    <span class="phpdocumentor-signature__name">ALREADYEXISTS</span>
+    = <span class="phpdocumentor-signature__default-value">16</span>
 </code>
 
 
-        <section class="phpdocumentor-description"></section>
-
+    
         <section class="phpdocumentor-description"></section>
 
     
@@ -296,7 +296,7 @@ Level 2 is a teacher who has the access to students and subjects</dd>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="admin/userDetail.php"><a href="files/admin-userdetail.html"><abbr title="admin/userDetail.php">userDetail.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">28</span>
+    <span class="phpdocumentor-element-found-in__line">31</span>
 
     </aside>
 
@@ -624,7 +624,7 @@ Level 2 is a teacher who has the access to students and subjects</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="admin/subjects.php"><a href="files/admin-subjects.html"><abbr title="admin/subjects.php">subjects.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
@@ -661,11 +661,12 @@ Level 2 is a teacher who has the access to students and subjects</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="detail.php"><a href="files/detail.html"><abbr title="detail.php">detail.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">26</span>
+    <span class="phpdocumentor-element-found-in__line">27</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Creates and returns HTML that represents the list of classes that has been provided</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                 <span class="phpdocumentor-signature__name">prepareClasses</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$classes</span></span><span class="phpdocumentor-signature__argument"><span>, </span><span class="phpdocumentor-signature__argument__return-type"><a href="classes/ClassRepository.html"><abbr title="\ClassRepository">ClassRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$crepo</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -678,14 +679,18 @@ Level 2 is a teacher who has the access to students and subjects</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>list of classes</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$crepo</span>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/ClassRepository.html"><abbr title="\ClassRepository">ClassRepository</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>class repository used to check whether a user is already signed up</p>
+</section>
+
             </dd>
             </dl>
 
@@ -694,7 +699,9 @@ Level 2 is a teacher who has the access to students and subjects</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>composed HTML code to show classes</p>
+</section>
+
     
 </article>
                     <article class="phpdocumentor-element -function - ">
@@ -775,11 +782,11 @@ Level 2 is a teacher who has the access to students and subjects</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="signup.php"><a href="files/signup.html"><abbr title="signup.php">signup.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">33</span>
+    <span class="phpdocumentor-element-found-in__line">37</span>
 
     </aside>
 
-        <p class="phpdocumentor-summary">Validates</p>
+        <p class="phpdocumentor-summary">Validates the inputs in {@link $_POST} against</p>
 
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
@@ -877,11 +884,12 @@ Level 2 is a teacher who has the access to students and subjects</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="subjects.php"><a href="files/subjects.html"><abbr title="subjects.php">subjects.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">70</span>
+    <span class="phpdocumentor-element-found-in__line">71</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Composites and obtains paginated subjects</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                 <span class="phpdocumentor-signature__name">prepareOrder</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type"><a href="classes/SubjectRepository.html"><abbr title="\SubjectRepository">SubjectRepository</abbr></a>&nbsp;</span><span class="phpdocumentor-signature__argument__name">$srepo</span></span><span class="phpdocumentor-signature__argument"><span>[</span><span>, </span><span class="phpdocumentor-signature__argument__return-type">int&nbsp;</span><span class="phpdocumentor-signature__argument__name">$offset</span><span> = </span><span class="phpdocumentor-signature__argument__default-value">null</span><span> ]</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">mixed</span></code>
@@ -894,14 +902,18 @@ Level 2 is a teacher who has the access to students and subjects</p>
                 : <span class="phpdocumentor-signature__argument__return-type"><a href="classes/SubjectRepository.html"><abbr title="\SubjectRepository">SubjectRepository</abbr></a></span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>from where to get subjects</p>
+</section>
+
             </dd>
                     <dt class="phpdocumentor-argument-list__entry">
                 <span class="phpdocumentor-signature__argument__name">$offset</span>
                 : <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">null</span>            </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>offset to enable pagination</p>
+</section>
+
             </dd>
             </dl>
 
@@ -921,11 +933,12 @@ Level 2 is a teacher who has the access to students and subjects</p>
     <aside class="phpdocumentor-element-found-in">
     <abbr class="phpdocumentor-element-found-in__file" title="user.php"><a href="files/user.html"><abbr title="user.php">user.php</abbr></a></abbr>
     :
-    <span class="phpdocumentor-element-found-in__line">22</span>
+    <span class="phpdocumentor-element-found-in__line">24</span>
 
     </aside>
 
-    
+        <p class="phpdocumentor-summary">Prepares, composites and returns HTML representation of classes</p>
+
     <code class="phpdocumentor-code phpdocumentor-signature ">
     <span class="phpdocumentor-signature__visibility"></span>
                 <span class="phpdocumentor-signature__name">prepareClasses</span><span>(</span><span class="phpdocumentor-signature__argument"><span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;&nbsp;</span><span class="phpdocumentor-signature__argument__name">$classes</span></span><span>)</span><span> : </span><span class="phpdocumentor-signature__response_type">string</span></code>
@@ -938,7 +951,9 @@ Level 2 is a teacher who has the access to students and subjects</p>
                 : <span class="phpdocumentor-signature__argument__return-type">array&lt;string|int, mixed&gt;</span>
                             </dt>
             <dd class="phpdocumentor-argument-list__definition">
-                
+                    <section class="phpdocumentor-description"><p>classes to be comopsited as HTML</p>
+</section>
+
             </dd>
             </dl>
 
@@ -947,7 +962,9 @@ Level 2 is a teacher who has the access to students and subjects</p>
         <h5 class="phpdocumentor-return-value__heading">Return values</h5>
     <span class="phpdocumentor-signature__response_type">string</span>
             &mdash;
-        
+            <section class="phpdocumentor-description"><p>composited HTML</p>
+</section>
+
     
 </article>
             </section>

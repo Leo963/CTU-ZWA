@@ -70,9 +70,8 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * TODO
      * @param $id int Id of the subject to retrieve
-     * @return array|false
+     * @return array|false array on success, false on failure
      */
     public function getSubjectByid(int $id)
     {
@@ -85,9 +84,8 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * Gets
-     * @param $id
-     * @return array|false
+     * @param int $id ID of the subject
+     * @return array|false array on success, false on failure
      */
     public function getSubjectDetailsById(int $id)
     {
@@ -100,7 +98,7 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * @return array|false
+     * @return array|false array on success, false on failure
      */
     public function getAllSubjectsWithDetails()
     {
@@ -110,8 +108,8 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * @param string $code
-     * @return array|false
+     * @param string $code Fulltext code search
+     * @return array|false array on success, false on failure
      */
     public function getSubjectsCodeSearch(string $code)
     {
@@ -126,8 +124,8 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * @param string $name
-     * @return array|false
+     * @param string $name Fulltext name search
+     * @return array|false array on success, false on failure
      */
     public function getSubjectsNameSearch(string $name)
     {
@@ -142,10 +140,11 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * @param int $id
-     * @param string $anotation
-     * @param string $description
-     * @param int $length
+     * Sets the detail values of existing subject to the provided values
+     * @param int $id ID of the subject
+     * @param string $anotation the anotation of the subject
+     * @param string $description the description of the subject
+     * @param int $length length in weeks of the subject, should be between 1 and 42 inclusive
      */
     public function updateDetails(int $id, string $anotation, string $description, int $length)
     {
@@ -165,9 +164,10 @@ class SubjectRepository extends Repository
     }
 
     /**
-     * @param string $code
-     * @param string $name
-     * @return string
+     * Creates a new subject from the given values
+     * @param string $code Subject code
+     * @param string $name Subject name
+     * @return string ID of the inserted row
      */
     public function newSubject(string $code, string $name)
     {

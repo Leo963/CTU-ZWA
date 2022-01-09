@@ -63,8 +63,9 @@ function clamp(int $value, int $min, int $max): int
                 $pages = ceil($maxItems / ITEMS_PER_PAGE);
 
                 /**
-                 * @param SubjectRepository $srepo
-                 * @param int $offset
+                 * Composites and obtains paginated subjects
+                 * @param SubjectRepository $srepo from where to get subjects
+                 * @param int $offset offset to enable pagination
                  * @return mixed
                  */
                 function prepareOrder(SubjectRepository $srepo, int $offset = null)
@@ -112,8 +113,8 @@ function clamp(int $value, int $min, int $max): int
 
                 foreach ($subjects as $subject) {
                     echo "<article class='subject'>
-                    <h3 class='code'>$subject[code]</h3>
-                    <h3 class='name'>$subject[name]</h3>
+                    <h3 class='code'>". htmlspecialchars($subject['code'])."</h3>
+                    <h3 class='name'>". htmlspecialchars($subject['name'])."</h3>
                     <form action='detail.php'>
                     <button class='detail' name='id' value='$subject[id]'>Detail</button>
                     </form>

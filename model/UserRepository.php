@@ -7,11 +7,11 @@ class UserRepository extends Repository
 {
     /**
      * Creates a user in database
-     * @param string $fname
-     * @param string $lname
-     * @param string $dob in format YYYY-MM-DD
+     * @param string $fname First name
+     * @param string $lname last name
+     * @param string $dob Date of birth in format YYYY-MM-DD
      * @param string $username
-     * @param string $pass
+     * @param string $pass password, to be provided as hashed, the result of password_hash() preffered
      */
     public function createUser(string $fname, string $lname, $dob, string $username, string $pass) {
         $this->dataLayer->insert(
@@ -54,13 +54,13 @@ class UserRepository extends Repository
 
     /**
      * Updates users password to a new one
-     * @param string $username
-     * @param int $id
-     * @param string $password
-     * @return false|PDOStatement False if update has failed
+     * @param string $username username of the user whose password is to be updated
+     * @param int $id id of the user whose password is to be updated
+     * @param string $password new password, to be provided as hashed, the result of password_hash() preffered
+     * @return bool true on success, false on failure
      */
     public function updatePassword(string $username, int $id, string $password) :bool {
-        return $this->dataLayer->update(
+        if (is_object($this->dataLayer->update(
             "UPDATE users 
                 SET pass = :password
                 WHERE id = :id AND uname = :uname",
@@ -69,7 +69,8 @@ class UserRepository extends Repository
                 ":id" => $id,
                 ":uname" => $username
             ]
-        );
+        ))) return true;
+        return false;
     }
 
     /**
@@ -95,9 +96,9 @@ class UserRepository extends Repository
     }
 
     /**
-     * Adds email to specified user
-     * @param string $username
-     * @param string $email
+     * Sets email of specified user
+     * @param string $username username of the user whose email is to be set
+     * @param string $email the email to be set
      * @return false|PDOStatement
      */
     public function setEmail(string $username, string $email)
@@ -112,7 +113,8 @@ class UserRepository extends Repository
     }
 
     /**
-     * @param string $uname
+     * Fulltext username search accross all users
+     * @param string $uname the username to be searched for
      * @return array|false
      */
     public function getUsersUsernameSearch(string $uname)
@@ -128,7 +130,8 @@ class UserRepository extends Repository
     }
 
     /**
-     * @param string $uname
+     * Fulltext username search accross users who have the role student
+     * @param string $uname the username to be searched for
      * @return array|false
      */
     public function getStudentsUsernameSearch(string $uname)
@@ -144,7 +147,8 @@ class UserRepository extends Repository
     }
 
     /**
-     * @param string $uname
+     * Fulltext name search accross users who have the role student
+     * @param string $uname the fullname to be searched for
      * @return array|false
      */
     public function getUsersFullnameSearch(string $uname)
@@ -162,7 +166,8 @@ class UserRepository extends Repository
     }
 
     /**
-     * @param string $uname
+     * Fulltext name search accross users who have the role student
+     * @param string $uname the fullname to be searched for
      * @return array|false
      */
     public function getStudentsFullnameSearch(string $uname)
@@ -180,7 +185,7 @@ class UserRepository extends Repository
     }
 
     /**
-     * @param int $id
+     * @param int $id id of the user to be retrieved
      * @return array|false
      */
     public function getUserById(int $id)
@@ -194,27 +199,22 @@ class UserRepository extends Repository
     }
 
     /**
-     * @param int $id
-     * @param string $username
-     * @param string $fname
-     * @param string $lname
-     * @param $dob
+     * Sets the users first and last name
+     * @param int $id id of the user to be updated
+     * @param string $fname new first name
+     * @param string $lname new last name
      * @return false|PDOStatement
      */
-    public function updateUser(int $id, string $username, string $fname, string $lname, $dob)
+    public function updateUser(int $id, string $fname, string $lname)
     {
         return $this->dataLayer->update(
             "UPDATE users 
-                    SET uname = :uname,
-                    fname = :fname,
-                    lname = :lname,
-                    dob = :dob
+                    SET fname = :fname,
+                    lname = :lname
                     WHERE id = :id",
             [
-                ":uname" => $username,
                 ":fname" => $fname,
                 ":lname" => $lname,
-                ":dob" => $dob,
                 ":id" => $id
             ]
         );
@@ -228,6 +228,34 @@ class UserRepository extends Repository
         return $this->dataLayer->selectAll(
             "SELECT * FROM users WHERE role < 3"
         );
+    }
+
+    /**
+     * @return array|false
+     */
+    public function getRoles()
+    {
+        return $this->dataLayer->selectAll(
+            "SELECT * FROM kaufmlu1.roles"
+        );
+    }
+
+
+    /**
+     * Checks if the user with the provided id is a teacher
+     * @param int $teacher id the user to be checked
+     * @return bool
+     */
+    public function isTeacher(int $teacher)
+    {
+        $role = $this->dataLayer->selectOne(
+            "SELECT role FROM kaufmlu1.users WHERE id = :teacher",
+            [
+                ":teacher" => $teacher
+            ]
+        );
+        if ($role[0] < 3) return true;
+        return false;
     }
 
 

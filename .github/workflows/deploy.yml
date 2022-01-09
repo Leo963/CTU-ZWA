@@ -28,6 +28,22 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.PASSWORD }}
+      - name: scp-model
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: model
+          remote: /home/kaufmlu1/www/semestralka/model
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
+      - name: scp-admin
+        uses: garygrossgarten/github-action-scp@v0.7.3
+        with:
+          local: admin
+          remote: /home/kaufmlu1/www/semestralka/admin
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.PASSWORD }}
       - name: scp-assets
         uses: garygrossgarten/github-action-scp@v0.7.3
         with:

@@ -1,3 +1,6 @@
+<?php
+    require_once "init.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +10,6 @@
     <link rel="stylesheet" href="css/landing.css">
 </head>
 <?php
-    require_once "init.php";
     $_SESSION['role'] = $users->getUser($_SESSION['user'])['role'];
 ?>
 <body>
@@ -16,39 +18,9 @@
     <?php include 'nav.php' ?>
     <section class="main">
         <h4>Dnes je <?= date("d.m.Y") ?></h4>
-        <article>
-            <header>
-                <h2>Nadcházející</h2>
-            </header>
-            <div class="lessons">
-                <div class="lesson">
-                    <header>
-                        <h2>ZWA</h2>
-                        <span><time>11:00</time>-<time>12:30</time></span>
-                    </header>
-                    <section class="lesson">
-                        <h2>Základy webových aplikací</h2>
-                        <p>T2:D3-209</p>
-                    </section>
-                </div>
-                <div class="lesson">
-                    <header>
-                        <h2>ZWA</h2>
-                        <span><time>11:00</time>-<time>12:30</time></span>
-                    </header>
-                    <section class="lesson">
-                        <h2>Základy webových aplikací</h2>
-                        <p>KN:E-310</p>
-                    </section>
-                </div>
-                <div class="lesson"></div>
-                <div class="lesson"></div>
-            </div>
-        </article>
-        <article>
-            <header>
-                <h2>Aktuality</h2>
-            </header>
+        <article id='welcome'>
+        <h2>Vítejte na stránkách Studentské Organizační Platformy</h2>
+        <p>Tato stránka vám umožní se zapsat do předmětů a rozšířit své obzory</p>
         </article>
     </section>
 </div>

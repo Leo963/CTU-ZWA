@@ -26,8 +26,8 @@ function generateUsers(array $users, bool $admin): string
 
     foreach ($users as $user) {
         $userStruct .= "<tr>";
-        $userStruct .= "<td>$user[username]</td>";
-        $userStruct .= "<td>$user[fullname]</td>";
+        $userStruct .= "<td>". htmlspecialchars($user['username']) . "</td>";
+        $userStruct .= "<td>". htmlspecialchars($user['fullname']) . "</td>";
         $userStruct .= "<td>$user[dob]</td>";
         if ($admin) {
             $userStruct .= "<td>$user[role]</td>";

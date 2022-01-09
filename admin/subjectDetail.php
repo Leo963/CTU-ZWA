@@ -49,15 +49,15 @@ function prepareClassesAdmin(array $classes, ClassRepository $crepo): string
                     ";
         $lectureStruct .= "
                     <section class='class'>
-                        <h2>$lecture[teacher]</h2>
-                        <p>$lecture[location]</p>
+                        <h2>".htmlspecialchars($lecture['teacher'])."</h2>
+                        <p>".htmlspecialchars($lecture['location'])."</p>
                         ";
         if ($crepo->isAnyoneSignedUp($lecture['id'])) {
             $lectureStruct .= "<p class='error'>Uživatelé již mají tuto paralelku zapsanou</p>";
             $lectureStruct .= "<form action='deleteClass.php' method='post'>
             <label>
                 Opravdu checte smazat?
-                <input type='checkbox' name='check' value='0' required>
+                <input type='checkbox' name='check' value='1' required>
             </label>
             <input type='submit' name='delete' value='Smazat'>
             <input type='hidden' name='class' value='$lecture[id]'>
@@ -98,24 +98,24 @@ include '../header.php';
     <?php include '../nav.php' ?>
 
     <section class="main">
-        <h2>Předmět - <?= $subject['code'] ?> - <?= $subject['name'] ?></h2>
+        <h2>Předmět - <?= htmlspecialchars($subject['code']) ?> - <?= htmlspecialchars($subject['name']) ?></h2>
         <article class="settings">
             <h2>Detaily předmětu</h2>
             <form action="<?= $_SERVER['REQUEST_URI'] ?>" id="properties" method="post">
                 <label for="length">
                     Délka (v týdnech):
-                    <input type="number" value="<?= $subject['length'] ?>" name="length" id="length">
+                    <input type="number" value="<?= $subject['length'] ?>" name="length" id="length" min="1" max="42">
                 </label>
                 <label for="anotation">
                     Anotace
                 </label>
                 <textarea name="anotation" id="anotation" cols="20" rows="3"
-                          maxlength="150"><?= $subject['anotation'] ?></textarea>
+                          maxlength="150"><?= htmlspecialchars($subject['anotation']) ?></textarea>
                 <label for="description">
                     Popis
                 </label>
                 <textarea name="description" id="anotation" cols="20" rows="10"
-                          maxlength="500"><?= $subject['description'] ?></textarea>
+                          maxlength="500"><?= htmlspecialchars($subject['description']) ?></textarea>
                 <input type="submit" value="Aktualizovat">
             </form>
         </article>

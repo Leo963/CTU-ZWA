@@ -23,7 +23,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\prepareClasses\u0028\u0029",
             "name": "prepareClasses",
-            "summary": "",
+            "summary": "Prepares,\u0020composites\u0020and\u0020returns\u0020HTML\u0020representation\u0020of\u0020classes",
             "url": "namespaces/default.html#function_prepareClasses"
         },                {
             "fqsen": "\\MAX_ADMIN_LEVEL",
@@ -78,7 +78,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ClassRepository\u003A\u003AisAnyoneSignedUp\u0028\u0029",
             "name": "isAnyoneSignedUp",
-            "summary": "",
+            "summary": "Checks\u0020if\u0020there\u0020is\u0020someone\u0020signed\u0020up\u0020to\u0020given\u0020class",
             "url": "classes/ClassRepository.html#method_isAnyoneSignedUp"
         },                {
             "fqsen": "\\ClassRepository\u003A\u003AdeleteClass\u0028\u0029",
@@ -93,7 +93,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\ClassRepository\u003A\u003AaddNewClass\u0028\u0029",
             "name": "addNewClass",
-            "summary": "",
+            "summary": "Adds\u0020new\u0020class\u0020with\u0020specified\u0020parameters",
             "url": "classes/ClassRepository.html#method_addNewClass"
         },                {
             "fqsen": "\\Config",
@@ -173,27 +173,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Helper",
             "name": "Helper",
-            "summary": "Class\u0020to\u0020place\u0020functions\u0020or\u0020constants\u0020used\u0020in\u0020multiple\u0020files\u0020to\u0020reduce\u0020code\u0020duplication",
+            "summary": "Class\u0020with\u0020constants\u0020used\u0020in\u0020multiple\u0020files\u0020to\u0020reduce\u0020code\u0020duplication",
             "url": "classes/Helper.html"
         },                {
             "fqsen": "\\Helper\u003A\u003ALECTURE",
             "name": "LECTURE",
-            "summary": "",
+            "summary": "ID\u0020of\u0020lecture\u0020as\u0020defined\u0020in\u0020classtypes\u0020table",
             "url": "classes/Helper.html#constant_LECTURE"
         },                {
             "fqsen": "\\Helper\u003A\u003APRACTICAL",
             "name": "PRACTICAL",
-            "summary": "",
+            "summary": "ID\u0020of\u0020practical\u0020as\u0020defined\u0020in\u0020classtypes\u0020table",
             "url": "classes/Helper.html#constant_PRACTICAL"
         },                {
             "fqsen": "\\Helper\u003A\u003ALAB",
             "name": "LAB",
-            "summary": "",
+            "summary": "ID\u0020of\u0020lab\u0020as\u0020defined\u0020in\u0020classtypes\u0020table",
             "url": "classes/Helper.html#constant_LAB"
         },                {
             "fqsen": "\\Helper\u003A\u003ACLASSLENGTH",
             "name": "CLASSLENGTH",
-            "summary": "",
+            "summary": "A\u0020string\u0020used\u0020to\u0020add\u0020the\u0020length\u0020of\u0020class\u0020to\u0020its\u0020start\u0020time",
             "url": "classes/Helper.html#constant_CLASSLENGTH"
         },                {
             "fqsen": "\\Repository",
@@ -238,12 +238,12 @@ Search.appendIndex(
         },                {
             "fqsen": "\\SubjectRepository\u003A\u003AgetSubjectByid\u0028\u0029",
             "name": "getSubjectByid",
-            "summary": "TODO",
+            "summary": "",
             "url": "classes/SubjectRepository.html#method_getSubjectByid"
         },                {
             "fqsen": "\\SubjectRepository\u003A\u003AgetSubjectDetailsById\u0028\u0029",
             "name": "getSubjectDetailsById",
-            "summary": "Gets",
+            "summary": "",
             "url": "classes/SubjectRepository.html#method_getSubjectDetailsById"
         },                {
             "fqsen": "\\SubjectRepository\u003A\u003AgetAllSubjectsWithDetails\u0028\u0029",
@@ -263,8 +263,13 @@ Search.appendIndex(
         },                {
             "fqsen": "\\SubjectRepository\u003A\u003AupdateDetails\u0028\u0029",
             "name": "updateDetails",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020detail\u0020values\u0020of\u0020existing\u0020subject\u0020to\u0020the\u0020provided\u0020values",
             "url": "classes/SubjectRepository.html#method_updateDetails"
+        },                {
+            "fqsen": "\\SubjectRepository\u003A\u003AnewSubject\u0028\u0029",
+            "name": "newSubject",
+            "summary": "Creates\u0020a\u0020new\u0020subject\u0020from\u0020the\u0020given\u0020values",
+            "url": "classes/SubjectRepository.html#method_newSubject"
         },                {
             "fqsen": "\\UserRepository",
             "name": "UserRepository",
@@ -303,27 +308,27 @@ Search.appendIndex(
         },                {
             "fqsen": "\\UserRepository\u003A\u003AsetEmail\u0028\u0029",
             "name": "setEmail",
-            "summary": "Adds\u0020email\u0020to\u0020specified\u0020user",
+            "summary": "Sets\u0020email\u0020of\u0020specified\u0020user",
             "url": "classes/UserRepository.html#method_setEmail"
         },                {
             "fqsen": "\\UserRepository\u003A\u003AgetUsersUsernameSearch\u0028\u0029",
             "name": "getUsersUsernameSearch",
-            "summary": "",
+            "summary": "Fulltext\u0020username\u0020search\u0020accross\u0020all\u0020users",
             "url": "classes/UserRepository.html#method_getUsersUsernameSearch"
         },                {
             "fqsen": "\\UserRepository\u003A\u003AgetStudentsUsernameSearch\u0028\u0029",
             "name": "getStudentsUsernameSearch",
-            "summary": "",
+            "summary": "Fulltext\u0020username\u0020search\u0020accross\u0020users\u0020who\u0020have\u0020the\u0020role\u0020student",
             "url": "classes/UserRepository.html#method_getStudentsUsernameSearch"
         },                {
             "fqsen": "\\UserRepository\u003A\u003AgetUsersFullnameSearch\u0028\u0029",
             "name": "getUsersFullnameSearch",
-            "summary": "",
+            "summary": "Fulltext\u0020name\u0020search\u0020accross\u0020users\u0020who\u0020have\u0020the\u0020role\u0020student",
             "url": "classes/UserRepository.html#method_getUsersFullnameSearch"
         },                {
             "fqsen": "\\UserRepository\u003A\u003AgetStudentsFullnameSearch\u0028\u0029",
             "name": "getStudentsFullnameSearch",
-            "summary": "",
+            "summary": "Fulltext\u0020name\u0020search\u0020accross\u0020users\u0020who\u0020have\u0020the\u0020role\u0020student",
             "url": "classes/UserRepository.html#method_getStudentsFullnameSearch"
         },                {
             "fqsen": "\\UserRepository\u003A\u003AgetUserById\u0028\u0029",
@@ -333,13 +338,23 @@ Search.appendIndex(
         },                {
             "fqsen": "\\UserRepository\u003A\u003AupdateUser\u0028\u0029",
             "name": "updateUser",
-            "summary": "",
+            "summary": "Sets\u0020the\u0020users\u0020first\u0020and\u0020last\u0020name",
             "url": "classes/UserRepository.html#method_updateUser"
         },                {
             "fqsen": "\\UserRepository\u003A\u003AgetAllTeachers\u0028\u0029",
             "name": "getAllTeachers",
             "summary": "",
             "url": "classes/UserRepository.html#method_getAllTeachers"
+        },                {
+            "fqsen": "\\UserRepository\u003A\u003AgetRoles\u0028\u0029",
+            "name": "getRoles",
+            "summary": "",
+            "url": "classes/UserRepository.html#method_getRoles"
+        },                {
+            "fqsen": "\\UserRepository\u003A\u003AisTeacher\u0028\u0029",
+            "name": "isTeacher",
+            "summary": "Checks\u0020if\u0020the\u0020user\u0020with\u0020the\u0020provided\u0020id\u0020is\u0020a\u0020teacher",
+            "url": "classes/UserRepository.html#method_isTeacher"
         },                {
             "fqsen": "\\VALID",
             "name": "VALID",
@@ -366,9 +381,14 @@ Search.appendIndex(
             "summary": "Bitwise\u00208\u0020represents\u0020a\u0020signup\u0020invalid\u0020because\u0020of\u0020password\u0020not\u0020complex\u0020enough",
             "url": "namespaces/default.html#constant_NOTCOMPLEX"
         },                {
+            "fqsen": "\\ALREADYEXISTS",
+            "name": "ALREADYEXISTS",
+            "summary": "Bitwise\u002016\u0020represents\u0020a\u0020signup\u0020invalid\u0020because\u0020of\u0020already\u0020existing\u0020username",
+            "url": "namespaces/default.html#constant_ALREADYEXISTS"
+        },                {
             "fqsen": "\\validate\u0028\u0029",
             "name": "validate",
-            "summary": "Validates",
+            "summary": "Validates\u0020the\u0020inputs\u0020in\u0020\u007B\u0040link\u0020\u0024_POST\u007D\u0020against",
             "url": "namespaces/default.html#function_validate"
         },                {
             "fqsen": "\\ITEMS_PER_PAGE",
@@ -383,7 +403,7 @@ Search.appendIndex(
         },                {
             "fqsen": "\\prepareOrder\u0028\u0029",
             "name": "prepareOrder",
-            "summary": "",
+            "summary": "Composites\u0020and\u0020obtains\u0020paginated\u0020subjects",
             "url": "namespaces/default.html#function_prepareOrder"
         },                {
             "fqsen": "\\",
