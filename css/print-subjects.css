@@ -1,0 +1,31 @@
+* {
+    font-size: 14pt;
+}
+
+header.page ,nav {
+    display: none;
+}
+
+section.main {
+    min-width: 500px;
+}
+
+td {
+    min-width: 100px;
+}
+
+thead > tr:nth-child(2) {
+    display: none;
+}
+
+tr > th:nth-child(4), tr > td:nth-child(4) {
+    display: none;
+}
+
+tbody > tr:nth-child(10n) {
+    page-break-after: always;
+}
+
+@page {
+    size: A4 portrait;
+}
