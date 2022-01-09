@@ -1,3 +1,6 @@
+<?php
+require_once '../init.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,7 +12,6 @@
 </head>
 <body>
 <?php
-require_once '../init.php';
 
 $urepo = new UserRepository($dataLayer);
 $srepo = new SubjectRepository($dataLayer);
@@ -25,8 +27,8 @@ function generateSubjects(array $subjects): string
 
     foreach ($subjects as $subject) {
         $subjectStruct .= "<tr>";
-        $subjectStruct .= "<td>$subject[code]</td>";
-        $subjectStruct .= "<td>$subject[name]</td>";
+        $subjectStruct .= "<td>". htmlspecialchars($subject['code'])."</td>";
+        $subjectStruct .= "<td>". htmlspecialchars($subject['name'])."</td>";
         if ($subject['length'] == 1) {
             $subjectStruct .= "<td>$subject[length] týden</td>";
         } elseif ($subject['length'] < 5) {

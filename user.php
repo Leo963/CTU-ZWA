@@ -1,3 +1,6 @@
+<?php
+require_once 'init.php';
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,16 +11,15 @@
 </head>
 <body>
 <?php
-require_once 'init.php';
 
 $user = $users->getUser($_SESSION['user']);
 $crepo = new ClassRepository($dataLayer);
 
-const CLASSLENGTH = "+1 hour +30 minutes";
 
 /**
- * @param array $classes
- * @return string
+ * Prepares, composites and returns HTML representation of classes
+ * @param array $classes classes to be comopsited as HTML
+ * @return string composited HTML
  */
 function prepareClasses(array $classes): string
 {
@@ -32,14 +34,14 @@ function prepareClasses(array $classes): string
                         <span><time>" .
             date('H:i', strtotime($lecture['timeOfDay'])) . "
                         </time>-<time>" .
-            date('H:i', strtotime(CLASSLENGTH, strtotime($lecture['timeOfDay']))) . "
+            date('H:i', strtotime(Helper::CLASSLENGTH, strtotime($lecture['timeOfDay']))) . "
                         </time></span>
                     </header>
                     ";
         $lectureStruct .= "
                     <section class='class-info'>
-                        <h2>$lecture[teacher]</h2>
-                        <p>$lecture[location]</p>
+                    <h2>".htmlspecialchars($lecture['teacher'])."</h2>
+                    <p>".htmlspecialchars($lecture['location'])."</p>
                     </section>";
         $lectureStruct .= "</div>";
     }
@@ -82,7 +84,7 @@ include 'header.php';
                     </fieldset>
                 </div>
                 <div id="settings">
-                    <form action="changePass.php">
+                    <form action="changePass.php" method="post">
                         <fieldset>
                             <legend>Nastavení</legend>
                             <label for="currentPass">
@@ -119,7 +121,7 @@ include 'header.php';
         <article class="classes">
             <h2>Zapsané předměty</h2>
             <?php
-                echo prepareClassesAdmin($crepo->getUsersClasses($_SESSION['user']));
+                echo prepareClasses($crepo->getUsersClasses($_SESSION['user']));
             ?>
         </article>
     </section>

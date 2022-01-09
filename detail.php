@@ -19,9 +19,10 @@ if (isset($_GET['id'])) {
 }
 
 /**
- * @param array $classes
- * @param ClassRepository $crepo
- * @return string
+ * Creates and returns HTML that represents the list of classes that has been provided
+ * @param array $classes list of classes
+ * @param ClassRepository $crepo class repository used to check whether a user is already signed up
+ * @return string composed HTML code to show classes
  */
 function prepareClasses(array $classes, ClassRepository $crepo): string
 {
@@ -44,8 +45,8 @@ function prepareClasses(array $classes, ClassRepository $crepo): string
                     ";
         $lectureStruct .= "
                     <section class='class'>
-                        <h2>$lecture[teacher]</h2>
-                        <p>$lecture[location]</p>
+                        <h2>".htmlspecialchars($lecture['teacher'])."</h2>
+                        <p>".htmlspecialchars($lecture['location'])."</p>
                         ";
         if ($signedUp) {
             $lectureStruct .= "<form action='subjectsignoff.php' method='post'>";
@@ -90,13 +91,13 @@ include 'header.php';
     <section class="main">
         <header>
             <h2>Detail předmětu</h2>
-            <h2><?= $subject['code'] ?> - <?= $subject['name'] ?></h2>
+            <h2><?= htmlspecialchars($subject['code']) ?> - <?= htmlspecialchars($subject['name']) ?></h2>
         </header>
         <div class="data">
             <article class="info">
                 <fieldset>
                     <legend>Anotace</legend>
-                    <p><?= $subjectDetails['anotation'] ?></p>
+                    <p><?= htmlspecialchars($subjectDetails['anotation']) ?></p>
                 </fieldset>
                 <fieldset>
                     <p>Délka předmětu: <?= $subjectDetails['length'] ?> týdnů</p>
@@ -113,7 +114,7 @@ include 'header.php';
                 </fieldset>
                 <fieldset>
                     <legend>Popis</legend>
-                    <p><?= $subjectDetails['description'] ?></p>
+                    <p><?= htmlspecialchars($subjectDetails['description']) ?></p>
                 </fieldset>
             </article>
             <article class="classes">

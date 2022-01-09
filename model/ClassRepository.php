@@ -41,8 +41,8 @@ class ClassRepository extends Repository
 
 
     /**
-     * @param string $student
-     * @param int $class
+     * @param string $student username of the student to be signed up
+     * @param int $class id of the class
      * @return false|PDOStatement
      */
     public function signUpUserToClass(string $student, int $class)
@@ -58,7 +58,7 @@ class ClassRepository extends Repository
     }
 
     /**
-     * @param string $user
+     * @param string $user username
      * @return array|false
      */
     public function getUsersClasses(string $user)
@@ -98,7 +98,7 @@ class ClassRepository extends Repository
     }
 
     /**
-     * @param string $student
+     * @param string $student username
      * @param int $class
      * @return false|PDOStatement
      */
@@ -115,7 +115,8 @@ class ClassRepository extends Repository
     }
 
     /**
-     * @param int $id
+     * Checks if there is someone signed up to given class
+     * @param int $id Class id
      * @return bool
      */
     public function isAnyoneSignedUp(int $id) :bool
@@ -129,7 +130,7 @@ class ClassRepository extends Repository
     }
 
     /**
-     * @param int $class
+     * @param int $class Class id
      */
     public function deleteClass(int $class)
     {
@@ -150,12 +151,13 @@ class ClassRepository extends Repository
     }
 
     /**
-     * @param int $type
-     * @param int $teacher
-     * @param string $timeOfDay
-     * @param int $dayOfWeek
-     * @param string $location
-     * @param int $subject
+     * Adds new class with specified parameters
+     * @param int $type id of type as defined in classtypes table
+     * @param int $teacher id of the user who is the teacher
+     * @param string $timeOfDay time of day as a MariaSQL compatible time string (i.e. 110000 for 11:00:00)
+     * @param int $dayOfWeek day of week as a number 1 - Monday thru 5 - Friday
+     * @param string $location location of the class as string representation of locaiton code
+     * @param int $subject id of the subject to which this class is associated to
      */
     public function addNewClass(int $type, int $teacher, string $timeOfDay, int $dayOfWeek, string $location, int $subject)
     {

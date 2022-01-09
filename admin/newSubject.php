@@ -54,11 +54,11 @@ include '../header.php';
             <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
                 <div class="main">
                     <label for="code">Kód *</label>
-                    <input type="text" id="code" name="code" required pattern=".{2,3}-.{2,4}" placeholder="A00-AAA">
+                    <input type="text" id="code" name="code" required pattern="[A-Z]{1}\d{2}-.{2,4}" placeholder="A00-AAA">
                     <label for="name">Název *</label>
-                    <input type="text" id="name" name="name" required pattern=".{3,}">
+                    <input type="text" id="name" name="name" required pattern=".{3,25}">
                     <label for="length">Délka v týdnech *</label>
-                    <input type="number" id="length" name="length" value="14" min="1" required>
+                    <input type="number" id="length" name="length" value="14" min="1" max="42" required>
                 </div>
                 <div class="details">
                     <textarea name="anotation" id="anotation" cols="20" rows="3"

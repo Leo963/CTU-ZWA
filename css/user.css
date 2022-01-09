@@ -81,6 +81,12 @@ article.settings {
     text-align: center;
 }
 
+div.success {
+    background-color: rgb(0, 128, 0);
+    color: rgb(0, 192, 0);
+    font-weight: bold;
+}
+
 
 @media (prefers-color-scheme: dark) {
 

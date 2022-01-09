@@ -21,17 +21,23 @@ const TOOYOUNG = 4;
  * Bitwise 8 represents a signup invalid because of password not complex enough
  */
 const NOTCOMPLEX = 8;
+/**
+ * Bitwise 16 represents a signup invalid because of already existing username
+ */
+const ALREADYEXISTS = 16;
 
 $badValue = VALID;
 
 
 /**
- * Validates
+ * Validates the inputs in {@link $_POST} against
  * @param $badValue int Reference to bad value
  * @return bool If values passed validation
  */
 function validate(int &$badValue) :bool
 {
+    $dataLayer = new DataLayer();
+    $urepo = new UserRepository($dataLayer);
     $currDate = new DateTime('now');
     if (strlen($_POST['username']) < 6) {
         $badValue |= SHORTUSERNAME;
@@ -44,6 +50,9 @@ function validate(int &$badValue) :bool
     }
     if (!preg_match("/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z])(?=.*[!@#$%&*()=+\-_\[\]{};:'|,<.>\/?€]).{8,}$/",$_POST['pass'])) {
         $badValue |= NOTCOMPLEX;
+    }
+    if ($urepo->getUser($_POST['username'])) {
+        $badValue |= ALREADYEXISTS;
     }
 
     if ($badValue != VALID)
@@ -112,6 +121,8 @@ if (
                 echo "<h3>Tato služba je dostupná až od 15 let</h3>";
             if ($badValue & NOTCOMPLEX)
                 echo "<h3>Heslo není dostatečně složité</h3>";
+            if ($badValue & ALREADYEXISTS)
+                echo "<h3>Uživatelské jméno již existuje</h3>";
             echo "</div>";
         }
         ?>

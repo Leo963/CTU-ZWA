@@ -23,13 +23,9 @@ div.lesson > header {
     padding: 10px;
 }
 
-
-section > article {
-    grid-row: 2;
-    margin: 5vh 5vw;
-    display: grid;
-    grid-template-rows: 100px 1fr;
-    background-color: var(--list-background-light);
+article#welcome {
+    grid-column: span 2;
+    text-align: center;
 }
 
 article > header > h2 {
@@ -64,11 +60,8 @@ section > h4 {
         color: #EBEBEB;
     }
 
-    section > article {
-        background-color: var(--list-background-dark);
+    article#welcome {
+        color: var(--foreground-dark);
     }
-}
-
-@media screen and (max-width: 1650px) {
 
 }
