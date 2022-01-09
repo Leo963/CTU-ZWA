@@ -75,7 +75,6 @@ include '../header.php';
                                 <?php
                                 $roles = $users->getRoles();
                                 foreach ($roles as $role) {
-                                    echo $_SESSION['role'];
                                     if ($role['id'] == $userDetails['role']) {
                                         echo "<option selected value='$role[id]'>$role[name]</option>";
                                     } else {

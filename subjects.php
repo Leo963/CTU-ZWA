@@ -55,6 +55,7 @@ function clamp(int $value, int $min, int $max): int
                 </h3>
             </header>
             <section class="list">
+                <h6>Seznam předmětů</h6>
                 <?php
 
                 const ITEMS_PER_PAGE = 5;
@@ -63,9 +64,8 @@ function clamp(int $value, int $min, int $max): int
                 $pages = ceil($maxItems / ITEMS_PER_PAGE);
 
                 /**
-                 * Composites and obtains paginated subjects
-                 * @param SubjectRepository $srepo from where to get subjects
-                 * @param int $offset offset to enable pagination
+                 * @param SubjectRepository $srepo
+                 * @param int $offset
                  * @return mixed
                  */
                 function prepareOrder(SubjectRepository $srepo, int $offset = null)

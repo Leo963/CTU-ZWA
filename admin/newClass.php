@@ -39,8 +39,6 @@ $subject = $srepo->getSubjectByid($_GET['subject']);
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/newClass.css">
@@ -51,7 +49,9 @@ $subject = $srepo->getSubjectByid($_GET['subject']);
 include '../header.php';
 ?>
 <div class="content">
-    <?php include '../nav.php' ?>
+    <?php include '../nav.php';
+    $types = $crepo->getAllTypes();
+    ?>
 
     <section class="main">
         <h2>Nová paralelka - <?= htmlspecialchars($subject['code']) ?> - <?= htmlspecialchars($subject['name']) ?></h2>
@@ -59,20 +59,21 @@ include '../header.php';
             <h2>Vlastnosti</h2>
             <form action="<?= $_SERVER['REQUEST_URI'] ?>" method="post">
                 <label for="type">Typ paralelky</label>
-                <select name="type" id="type" required>
+                <select name="type" id="type" required size='<?= count($types) ?>'>
                     <?php
                     $types = $crepo->getAllTypes();
                     foreach ($types as $type) {
                         echo "<option value='$type[id]'>$type[name]</option>";
                     }
+                    $teachers = $urepo->getAllTeachers();
                     ?>
                 </select>
                 <label for="teacher">Vyučující</label>
-                <select name="teacher" id="teacher" required>
+                <select name="teacher" id="teacher" required size='<?= count($teachers) ?>'>
                     <?php
                     $teachers = $urepo->getAllTeachers();
                     foreach ($teachers as $teacher) {
-                        echo "<option value='$teacher[id]'>" . htmlspecialchars($teacher[fname]) . " " . htmlspecialchars($teacher[lname])."</option>";
+                        echo "<option value='$teacher[id]'>" . htmlspecialchars($teacher['fname']) . " " . htmlspecialchars($teacher['lname'])."</option>";
                     }
                     ?>
                 </select>

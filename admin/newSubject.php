@@ -33,8 +33,6 @@ if (isset(
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/newSubject.css">
@@ -66,7 +64,7 @@ include '../header.php';
                     <label for="anotation">
                         Anotace
                     </label>
-                    <textarea name="description" id="anotation" cols="20" rows="10"
+                    <textarea name="description" id="description" cols="20" rows="10"
                               maxlength="500"></textarea>
                     <label for="description">
                         Popis

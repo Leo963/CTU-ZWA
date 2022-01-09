@@ -75,6 +75,7 @@ include '../header.php'
                     </form>
                 </th>
                 <th></th>
+                <?php if ($_SESSION['role'] == 1) echo "<th></th>"; ?>
                 <th></th>
             </tr>
             </thead>
