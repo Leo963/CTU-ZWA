@@ -109,3 +109,4 @@ Pro JS bylo využito ESLint pro udržení stylu.
 
 Všechny stránky byli validovány pomocí [HTML Validátoru](https://validator.w3.org/).
 
+Pro administrační stránku předmětů, byl vytvořen styl pro tisk.

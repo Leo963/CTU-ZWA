@@ -8,6 +8,7 @@ require_once '../init.php';
     <title>Administrace - Předměty</title>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="../css/print-subjects.css" media='print'>
     <script src="../js/admin.js"></script>
 </head>
 <body>
